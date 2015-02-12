@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>
+  </title>
+  <style>
+  .svg-container{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 1px solid gray;
+  }
+  </style>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.1.0/lodash.min.js"></script>
+</head>
+<body>
+
+  <script>
+    function render(data){
+            var svgContainer, svg;
+            var container =  d3.select('body');
+            svgContainer = container.append('div')
+                .classed('svg-container', true)
+                .classed('remote-container', this.isRemote);
+            svg = svgContainer.append('svg:svg');
+
+            svg.attr('id', this.name)
+                .attr('width', '100%')
+                .attr('height', '100%');
+
+
+            this.commitBox = svg.append('svg:g').classed('commits', true);
+            var circles = this.commitBox.selectAll('circle.commit')
+              .data(data, function(d){ return d.id; })
+              .enter()
+              .append('svg:circle');
+              
+
+  }
+  var data = [
+      { id: 'abc', parent: null},
+       { id: 'cde', parent: 'abc'}
+  ]
+  render(data);
+  </script>
+</body>
+</html>
