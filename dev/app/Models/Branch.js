@@ -9,8 +9,11 @@
 	Branch.prototype = {
 		setLane: function(lane){
 			this.lane = lane;
+		},
+		isMaster: function(){
+			return this.name === 'master';
 		}
-	}
+	};
 
 	angular.module('app').value('Branch', Branch);
 }());

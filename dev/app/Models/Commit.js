@@ -22,15 +22,17 @@
 			return this.branches.indexOf('master') > -1;
 		},
 		setX: function(x){
+
 			this.position = this.position || {x: 0, y: 0};
 			this.position.x = x;
 		},
 		setY: function(y){
+			//console.log("Setting Y:"+y+" for commit "+this.sha+" on "+this.branches.join())
 			this.position = this.position || {x: 0, y: 0};
 			this.position.y = y;	
 		}
 
-	}
+	};
 
 
 

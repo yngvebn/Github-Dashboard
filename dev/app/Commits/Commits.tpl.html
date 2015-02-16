@@ -1,0 +1,9 @@
+<github-graph commits='commits.commitData.commits' branches='commits.commitData.branches' />
+
+<ul>
+	<li ng-repeat="branch in commits.commitData.branches">{{branch.name}}</li>
+</ul>
+
+<ul>
+	<li ng-repeat="commit in commits.commitData.commits">{{commit.date}} - {{commit.sha}} - {{commit.branches}}</li>
+</ul>
