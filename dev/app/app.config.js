@@ -1,11 +1,11 @@
 angular.module('app').value('configuration', {
 	intervals: {
-		baseline: 100,
+		baseline: 10,
 		x: 30,
 		y: 30
 	}
 });
 
 angular.module('app').run(function($http) {
-  	$http.defaults.headers.common['Authorization'] ='token efd6c0e7276faf30f541e0d05d8acb7ea2ffc7cf';
+  	$http.defaults.headers.common['Authorization'] ='token 80332f6cc85918ed100627e323c52752f68ec540';
 });

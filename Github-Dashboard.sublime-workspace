@@ -361,6 +361,9 @@
 			]
 		]
 	},
+	"buffers":
+	[
+	],
 	"build_system": "",
 	"command_palette":
 	{
@@ -557,6 +560,10 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/C/github/Github-Dashboard"
+	],
 	"file_history":
 	[
 		"/C/GitHub/Github-Dashboard/dev/app/Auth/GitHub.tpl.html",
@@ -990,6 +997,14 @@
 		"whole_word": false,
 		"wrap": true
 	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
 	"incremental_find":
 	{
 		"height": 22.0
@@ -1029,6 +1044,7 @@
 	{
 		"height": 0.0
 	},
+	"project": "Github-Dashboard.sublime-project",
 	"replace":
 	{
 		"height": 62.0
@@ -1102,6 +1118,7 @@
 		],
 		"width": 488.0
 	},
+	"selected_group": 0,
 	"settings":
 	{
 	},

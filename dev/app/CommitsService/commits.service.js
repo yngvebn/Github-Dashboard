@@ -1,4 +1,4 @@
-function commitsService(Commit, Branch, graphLayoutService) {
+function commitsService(Commit, Branch) {
     var data = {
         branches: [],
         commits: []
@@ -72,7 +72,6 @@ function commitsService(Commit, Branch, graphLayoutService) {
                     findCommit(item.sha).addToBranch(branch);
                 }
             });
-        graphLayoutService.updatePositions(data.commits, data.branches);
     }
 
 

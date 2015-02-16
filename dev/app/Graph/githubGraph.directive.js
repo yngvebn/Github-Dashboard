@@ -1,4 +1,4 @@
-function githubGraph($q, configuration){
+function githubGraph($q, configuration, graphLayoutService){
 	return {
 		restrict: 'E',
 		template: '<div class="__github_graph"></div>',
@@ -12,6 +12,7 @@ function githubGraph($q, configuration){
 			self.svgContainer = null;
 			console.log(configuration);
             scope.$watch('commits', function() {
+                graphLayoutService.updatePositions(scope.commits, scope.branches);
             	renderCommits();
             }, true);
 
@@ -50,6 +51,7 @@ function githubGraph($q, configuration){
                         x: d.position.x,
                         y: d.position.y
                     });
+                    console.log(JSON.stringify(d.position), JSON.stringify(points));
                     return points;
                 }
 
@@ -64,7 +66,6 @@ function githubGraph($q, configuration){
                         .interpolate('basis');
 
                     var points = getLineData(item);
-                    console.log(lineFunction(points), JSON.stringify(points));
                     return lineFunction(points);
                 }
 
@@ -81,12 +82,6 @@ function githubGraph($q, configuration){
                 var existing = self.pointerBox.selectAll('path.commit')
                     .data(scope.commits, function(d) {
                         var to = 'initial';
-                    	if(d.parents.length > 0){
-                    		to = d.parents.join('_');
-                    	}
-                        return "_"+d.sha + '-to-' + to;
-                    }).attr('id', function(d) {
-                    	var to = 'initial';
                     	if(d.parents.length > 0){
                     		to = d.parents.join('_');
                     	}
@@ -157,10 +152,11 @@ function githubGraph($q, configuration){
 	                    .attr('width', '1000')
 	                    .attr('height', '1000');
 
+                    self.svgContainer = svgContainer;
+
 	                self.commitBox = svg.append('svg:g').classed('commits', true);
 
 	                self.pointerBox = svg.append('svg:g').classed('pointers', true);
-	                self.svgContainer = svgContainer;
 	                resolve();
 	            });
             }
