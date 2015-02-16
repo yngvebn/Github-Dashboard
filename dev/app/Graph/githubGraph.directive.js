@@ -10,11 +10,16 @@ function githubGraph($q, configuration, graphLayoutService){
 		link: function(scope, element){
 			var self ={};
 			self.svgContainer = null;
-			console.log(configuration);
             scope.$watch('commits', function() {
                 graphLayoutService.updatePositions(scope.commits, scope.branches);
             	renderCommits();
             }, true);
+
+            element.on('click', function(){
+                graphLayoutService.updatePositions(scope.commits, scope.branches);
+                renderCommits();
+            
+            });
 
             function findCommit(sha){
             	return _.find(scope.commits, {sha: sha});
@@ -31,7 +36,7 @@ function githubGraph($q, configuration, graphLayoutService){
                         var parent = findCommit(d.parents[0]);
                         if(parent){
                             startPoint = {
-                                x: parent.position.x,
+                                x: parent.position.x+10,
                                 y: parent.position.y
                             };
                         }
@@ -48,10 +53,9 @@ function githubGraph($q, configuration, graphLayoutService){
                         });
                     }
                     points.push({
-                        x: d.position.x,
+                        x: d.position.x == 0 ? 0 : d.position.x-10,
                         y: d.position.y
                     });
-                    console.log(JSON.stringify(d.position), JSON.stringify(points));
                     return points;
                 }
 
@@ -63,7 +67,7 @@ function githubGraph($q, configuration, graphLayoutService){
                         .y(function(d) {
                             return d.y;
                         })
-                        .interpolate('basis');
+                        .interpolate('linear');
 
                     var points = getLineData(item);
                     return lineFunction(points);
@@ -88,8 +92,7 @@ function githubGraph($q, configuration, graphLayoutService){
                         return "_"+d.sha + '-to-' + to;
                     });
 
-                existing.transition()
-                    .duration(200)
+                existing
                     .call(setLinePoints);
 
                 var newPointers = existing
@@ -110,7 +113,7 @@ function githubGraph($q, configuration, graphLayoutService){
 
             function setPosition(selection){
             	selection.attr('cx', function(d){
-            		if(d.position)
+                    if(d.position)
             			return d.position.x;
             		return 0;
             	}).attr('cy', function(d){
@@ -128,6 +131,7 @@ function githubGraph($q, configuration, graphLayoutService){
                     .attr('id', function(d){
                     	return "_"+d.sha;
                     })
+                    .call(setPosition)
                     .enter()
                     .append('svg:circle')
                     .classed('commit', true)

@@ -60,7 +60,8 @@ function commitsService(Commit, Branch) {
                     date: new Date(c.commit.committer.date),
                     branches: [branch],
                     heads: getHeadsForCommit(c.sha),
-                    parents: _.pluck(c.parents, 'sha')
+                    parents: _.pluck(c.parents, 'sha'),
+                    message: c.commit.message
                 });
             })
             .value()
@@ -71,7 +72,9 @@ function commitsService(Commit, Branch) {
                 } else {
                     findCommit(item.sha).addToBranch(branch);
                 }
+                findBranch.lastCommit = item.date;
             });
+
     }
 
 

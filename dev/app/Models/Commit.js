@@ -5,7 +5,7 @@
 		this.date = null;
 		this.branches = [];
 		this.heads = [];
-
+		this.message = '';
 		angular.extend(this, options);
 	}
 
