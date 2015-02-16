@@ -42,7 +42,7 @@ TestData.commits.develop = [{
     parents: ['b2'],
     commit: {
         committer: {
-            date: "2015-02-07T13:35:54Z"
+            date: "2015-02-07T13:35:55Z"
         }
     }
 }, {

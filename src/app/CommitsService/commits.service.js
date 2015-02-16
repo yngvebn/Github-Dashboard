@@ -1,5 +1,5 @@
 (function() {
-    function commitsService() {
+    function commitsService(Commit, Branch) {
         var data = {
             branches: [],
             commits: []
@@ -8,16 +8,17 @@
         return {
             add: add,
             commits: data.commits,
+            branches: data.branches,
             findCommit: findCommit,
             addBranch: addBranch
         }
 
         function addBranch(branch){
             if(!findBranch(branch.name)){
-                data.branches.push({
+                data.branches.push(new Branch({
                     name: branch.name,
                     sha: branch.commit.sha
-                });
+                }));
             }
         }
 
@@ -51,12 +52,12 @@
         function add(commits, branch) {
             _.chain(commits)
                 .map(function(c) {
-                    return {
+                    return new Commit({
                         sha: c.sha,
                         date: new Date(c.commit.committer.date),
                         branches: [branch],
                         heads: getHeadsForCommit(c.sha)
-                    }
+                    });
                 })
                 .value()
                 .forEach(function(item) {
@@ -64,7 +65,7 @@
                         var insertAtIndex = _.sortedLastIndex(data.commits, item, 'date');
                         data.commits.splice(insertAtIndex, 0, item);
                     } else {
-                        addBranchToCommit(findCommit(item.sha), branch);
+                        findCommit(item.sha).addToBranch(branch);
                     }
                 });
 
@@ -72,6 +73,7 @@
 
 
     }
+    commitsService.$inject = ['Commit', 'Branch'];
 
     angular.module('app').factory('commitsService', commitsService);
 }());
