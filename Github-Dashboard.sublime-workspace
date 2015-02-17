@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"hasC",
+				"hasChildrenInSameLane"
+			],
+			[
+				"render",
+				"renderBranchMarkers"
+			],
+			[
+				"git",
+				"GitPath"
+			],
+			[
 				"commits",
 				"commitsService"
 			],
@@ -18,10 +30,6 @@
 			[
 				"commit",
 				"commitMessage"
-			],
-			[
-				"git",
-				"gitExe"
 			],
 			[
 				"log",
@@ -361,21 +369,34 @@
 			]
 		]
 	},
-	"buffers":
-	[
-	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 219.0,
 		"selected_items":
 		[
 			[
-				"ja",
+				"java",
 				"Javascript Beautify"
 			],
 			[
-				"java",
+				"javas",
+				"Javascript Beautify"
+			],
+			[
+				"javascrp",
+				"Javascript Beautify"
+			],
+			[
+				"javascript",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"json",
+				"Set Syntax: JSON"
+			],
+			[
+				"ja",
 				"Javascript Beautify"
 			],
 			[
@@ -383,16 +404,8 @@
 				"Package Control: Install Package"
 			],
 			[
-				"javas",
-				"Set Syntax: JavaScript"
-			],
-			[
 				"git",
 				"Git: Toggle Annotations"
-			],
-			[
-				"json",
-				"Set Syntax: JSON"
 			],
 			[
 				"xml",
@@ -412,10 +425,6 @@
 			],
 			[
 				"javasc",
-				"Javascript Beautify"
-			],
-			[
-				"javascript",
 				"Javascript Beautify"
 			],
 			[
@@ -560,12 +569,20 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
-	"expanded_folders":
-	[
-		"/C/github/Github-Dashboard"
-	],
 	"file_history":
 	[
+		"/C/Arbeid/etoto/code/master/services/RaceDayService/Database/up/0040_AddObjectLocksToIntegrationExportTriggers.sql",
+		"/C/Arbeid/etoto/code/mcfly/services/RaceDayService/Database/up/0040_AddObjectLocksToIntegrationExportTriggers.sql",
+		"/C/dev/pmu/RacecardServiceEJB.1.xsd",
+		"/C/Arbeid/etoto/code/master/Reporting/Database/database.nuspec",
+		"/C/dev/pmu/RacecardServiceEJB.wsdl",
+		"/C/Arbeid/etoto/code/mcfly/Reporting/Database/database.nuspec",
+		"/C/arbeid/etoto/code/master/build/commitToGitWithComment.ps1",
+		"/C/github/Github-Dashboard/.gitignore",
+		"/C/github/Github-Dashboard/dev/app/GraphLayoutService/graphLayout.service.js",
+		"/C/Arbeid/etoto/code/master/Reporting/Database/runFirstAfterUp/dbo.ExternalsCustomers.Synonym.BUILD.ENV.sql",
+		"/C/Arbeid/etoto/code/master/Reporting/Database/runFirstAfterUp/dbo.ExternalsAccounts.Synonym.sql",
+		"/C/github/Github-Dashboard/dev/index.html",
 		"/C/GitHub/Github-Dashboard/dev/app/Auth/GitHub.tpl.html",
 		"/C/Arbeid/etoto/code/master/tools/Octopus/Unpacked/popup.js",
 		"/C/github/Github-Dashboard/dev/app/CommitsService/commits.service.js",
@@ -589,7 +606,6 @@
 		"/C/Arbeid/etoto/code/master/services/BettingService/Database/database.nuspec",
 		"/C/Arbeid/etoto/code/master/services/AgentService/Database/database.nuspec",
 		"/C/Arbeid/etoto/code/master/services/AccountingService/Database/database.nuspec",
-		"/C/Arbeid/etoto/code/master/Reporting/Database/database.nuspec",
 		"/C/Arbeid/etoto/code/master/services/ExpertService/Solution/Rikstoto.Service.Expert.Host/service.nuspec",
 		"/C/Arbeid/etoto/code/master/services/ExpertService/Database/database.nuspec",
 		"/C/Arbeid/etoto/code/master/services/ExpertService/ModuleDatabase/database.nuspec",
@@ -645,8 +661,6 @@
 		"/C/dev/svn-diff.xml",
 		"/C/github/Parent_Test/README.md",
 		"//r22home/home$/yngven/Dokumenter/WindowsPowerShell/Modules/posh-git/profile.example.ps1",
-		"/C/dev/pmu/RacecardServiceEJB.wsdl",
-		"/C/dev/pmu/RacecardServiceEJB.1.xsd",
 		"/C/dev/pmu/RacecardServiceEJB.3.xsd",
 		"/C/dev/pmu/RacecardServiceEJB.2.xsd",
 		"/C/dev/svndiff-test/services/ExpertService/Solution/Rikstoto.Service.Expert/Domain/IReservationForSubscriptionShareRepository.cs",
@@ -684,16 +698,7 @@
 		"/C/GitHub/Sendtochrome/chrome/popup.js",
 		"/C/Arbeid/etoto/code/trunk/services/ExpertService/Database/up/0173_ExpertGameSubscription_AddColumn_OriginatedFrom.sql",
 		"/C/Arbeid/withKillAll.bat",
-		"/C/GitHub/timer/bower_components/angular-material/angular-material.js",
-		"/C/GitHub/timer/bower_components/angular-material/.bower.json",
-		"//192.168.2.131/d$/kommweb.rikstoto.no/Code/Public/js/TeamGameAdmin/ko.teamgame.overview.js",
-		"/C/Arbeid/etoto/code/hydra/services/RaceDayService/Solution/Rikstoto.RacedayService.Import.Host/app.PROD.config",
-		"/C/Arbeid/etoto/code/hydra/services/RaceDayService/Solution/Rikstoto.RacedayService.Import.Host/log4net.PROD.config",
-		"//ffvirt01.r22web.local/etoto/Logs/InfoSystemServices/InfoSystemImportService/R22WEBINFO04_InfoSystemImportService.txt",
-		"//ffvirt01.r22web.local/etoto/Logs/InfoSystemServices/InfoSystemImportService/R22WEBINFO03_InfoSystemImportService.txt",
-		"//ffvirt01.r22web.local/etoto/Logs/InfoSystemServices/InfoSystemImportService/R22WEBINFO03_InfoSystemImportService.txt.2014-11-30",
-		"//ffvirt01.r22web.local/etoto/Logs/InfoSystemServices/InfoSystemImportService/R22WEBINFO04_InfoSystemImportService.txt.2014-11-30",
-		"//ffvirt01.r22web.local/etoto/Logs/BettingService/R22PRODINTSVC03_BettingService.txt"
+		"/C/GitHub/timer/bower_components/angular-material/angular-material.js"
 	],
 	"find":
 	{
@@ -750,6 +755,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"console.log",
 			"'vendor'",
 			"\n  ",
 			"specFolder",
@@ -876,8 +882,7 @@
 			"2:module",
 			"1:name",
 			"\\tAngularJS",
-			"factory",
-			"match_settings"
+			"factory"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -997,14 +1002,6 @@
 		"whole_word": false,
 		"wrap": true
 	},
-	"groups":
-	[
-		{
-			"sheets":
-			[
-			]
-		}
-	],
 	"incremental_find":
 	{
 		"height": 22.0
@@ -1044,7 +1041,6 @@
 	{
 		"height": 0.0
 	},
-	"project": "Github-Dashboard.sublime-project",
 	"replace":
 	{
 		"height": 62.0
@@ -1118,7 +1114,6 @@
 		],
 		"width": 488.0
 	},
-	"selected_group": 0,
 	"settings":
 	{
 	},
@@ -1126,7 +1121,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 370.0,
+	"side_bar_width": 312.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

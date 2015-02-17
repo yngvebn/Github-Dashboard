@@ -15,10 +15,11 @@ function graphLayoutService(configuration) {
     }
 
     function updateYPosition(commit, n, branches) {
-        var yPosition = _(branches).find({
+        var masterLane = _(branches).find({
             name: 'master'
-        }).lane+configuration.intervals.baseline;
-
+        }).lane;
+        var yPosition =masterLane +configuration.intervals.baseline;
+        commit.setLane(masterLane)
         if (!commit.isOnMaster()) {
             var matchingBranches = _.filter(branches, function(b) {
                 return commit.branches.indexOf(b.name) > -1;
@@ -27,7 +28,7 @@ function graphLayoutService(configuration) {
                 .pluck('lane')
                 .min()
                 .value();
-
+            commit.setLane(lowestLanePosition);
             yPosition =(lowestLanePosition*configuration.intervals.y)+configuration.intervals.baseline;
         }
         
@@ -54,7 +55,6 @@ function graphLayoutService(configuration) {
         _.forEach(commits, function(commit, n) {
             updateXPosition(commit, n);
             updateYPosition(commit, n, branches);
-
         });
     }
 }

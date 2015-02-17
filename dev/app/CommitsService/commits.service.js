@@ -43,15 +43,6 @@ function commitsService(Commit, Branch) {
         return !findCommit(commit.sha);
     }
 
-    function addBranchToCommit(commit, branch) {
-        if (commit.branches.indexOf('master') > -1) return;
-        if (branch === 'master') {
-            commit.branches = [branch];
-        } else {
-            commit.branches.push(branch);
-        }
-    }
-
     function add(commits, branch) {
         _.chain(commits)
             .map(function(c) {

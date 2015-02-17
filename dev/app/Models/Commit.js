@@ -23,13 +23,17 @@
 		},
 		setX: function(x){
 
-			this.position = this.position || {x: 0, y: 0};
+			this.position = this.position || {x: 0, y: 0, lane: 0};
 			this.position.x = x;
 		},
 		setY: function(y){
 			//console.log("Setting Y:"+y+" for commit "+this.sha+" on "+this.branches.join())
-			this.position = this.position || {x: 0, y: 0};
+			this.position = this.position || {x: 0, y: 0, lane: 0};
 			this.position.y = y;	
+		},
+		setLane: function(lane){
+			this.position = this.position || {x: 0, y: 0, lane: 0};
+			this.position.lane = lane;
 		}
 
 	};

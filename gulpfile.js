@@ -154,9 +154,9 @@ gulp.task('clean', function() {
     .pipe(rimraf());
 });
 
-gulp.task('build', ['vendor', 'scripts', 'styles','images', 'indexHtml', /*'ngMaterialThemes'*/]);
+gulp.task('build', ['vendor','lint', 'scripts', 'styles','images', 'indexHtml', /*'ngMaterialThemes'*/]);
 
-gulp.task('watch', ['build',  'webserver'], function() {
+gulp.task('watch', ['build', 'webserver'], function() {
   gulp.watch(paths.appJavascript, ['lint', 'scripts', 'test']);
   gulp.watch(paths.appTemplates, ['scripts']);
   gulp.watch(paths.specsJavascript, ['test']);

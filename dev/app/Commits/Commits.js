@@ -11,6 +11,7 @@ function Commits(gitHubService, commitsService) {
 
     function addCommits(commits, branch){
     	commitsService.add(commits, branch);
+        
     }
 
     function loadCommits(branches, repo){
