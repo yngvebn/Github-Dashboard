@@ -1,10 +1,11 @@
 describe('GraphLayout', function() {
     beforeEach(module('app', function($provide) {
-        $provide.service('value', function() {
+        $provide.service('configuration', function() {
             return {
                 intervals: {
                     x: 1,
-                    y: 1
+                    y: 1,
+                    baseline: 0
                 }
             }
 

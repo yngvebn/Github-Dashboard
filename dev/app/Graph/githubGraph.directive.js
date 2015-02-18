@@ -11,10 +11,12 @@ function githubGraph($q, configuration, graphLayoutService, colors){
 			var self ={};
 			self.svgContainer = null;
             self.element = element;
-            scope.$watch('commits', function() {
-                graphLayoutService.updatePositions(scope.commits, scope.branches);
-            	renderCommits();
-            }, true);
+            scope.$watch('commits', _.debounce(function(commits) {
+                    console.log('redrawing');
+                    scope.$apply(function(){
+                    graphLayoutService.updatePositions(scope.commits, scope.branches).then(renderCommits);
+                });
+            }, 2000), true);
 
           
             function findCommit(sha){
@@ -54,7 +56,7 @@ function githubGraph($q, configuration, graphLayoutService, colors){
                         });
                     }
                     points.push({
-                        x: d.position.x == 0 ? 0 : d.position.x,
+                        x: d.position.x === 0 ? 0 : d.position.x,
                         y: d.position.y
                     });
                     return points;
@@ -119,7 +121,7 @@ function githubGraph($q, configuration, graphLayoutService, colors){
             		if(d.position)
 						return d.position.y;
 					return 0;
-            	})
+            	});
             }
 
             function renderCircles(){
@@ -163,7 +165,7 @@ function githubGraph($q, configuration, graphLayoutService, colors){
                 var hasChildrenInSameLane = _.chain(children)
                                               .pluck('position')
                                               .some(function(pos){
-                                                    return pos.lane === commit.position.lane
+                                                    return pos.lane === commit.position.lane;
                                                 }).value();
 
                 if(hasChildrenInSameLane) return 'bottom';
@@ -180,12 +182,12 @@ function githubGraph($q, configuration, graphLayoutService, colors){
                     if(thisBranchIndex > 0){
                         for (var i = 0; i < thisBranchIndex; i++) {
                             offset+= ((commit.branches[i].length * 8)+5)+2;
-                        };
+                        }
                     }
                     return commit.position.x+10+(offset);
                 }
                 else{
-                    return commit.position.x-((branch.length * 8) + 5) / 2
+                    return commit.position.x-((branch.length * 8) + 5) / 2;
                 }
             }
 
@@ -213,8 +215,8 @@ function githubGraph($q, configuration, graphLayoutService, colors){
                     var commit = findCommit(d.sha);
 
                     if(commit && commit.position){
-                        var x = branchLabelX(commit, d.name)
-                        var y = branchLabelY(commit, d.name)
+                        var x = branchLabelX(commit, d.name);
+                        var y = branchLabelY(commit, d.name);
                     
                         return "translate("+x+","+y+")";
                     }
@@ -260,7 +262,7 @@ function githubGraph($q, configuration, graphLayoutService, colors){
                  branchContainer.append('svg:text')
                     .classed('branch-label', true)
                     .text(function(d){
-                        return d.name
+                        return d.name;
                     })
                     .attr('text-anchor', 'middle')
                     .attr('x', function(d){
@@ -272,24 +274,24 @@ function githubGraph($q, configuration, graphLayoutService, colors){
             }
 
             var initial = [0,0];
+             var zoom = d3.behavior.zoom().translate(initial).on("zoom", redraw);
 
             function renderCommits(){
+
             	renderPointers();
                 renderCircles();
                 renderBranchMarkers();
                 var lastCommit = _.last(scope.commits);
-                console.log(height(), width());
                 if(lastCommit && lastCommit.position && height() && width()){
                     
                     var translateX = (width()/2)-lastCommit.position.x;
                     var translateY = (height()/2)-(_.chain(scope.commits).pluck('position').max('lane').value().lane*configuration.intervals.y)/2;
-                    initial = [translateX, translateY];
-                    
+                    zoom.translate([translateX, translateY]);
+                    reposition([translateX, translateY]);   
                 }
             }
 
-            var zoom = d3.behavior.zoom().translate(initial).on("zoom", redraw);
-
+           
             function redraw() {
               reposition(d3.event.translate, d3.event.scale);
             }
@@ -299,13 +301,11 @@ function githubGraph($q, configuration, graphLayoutService, colors){
                     scale = d3.transform(self.commitContainer.attr('transform')).scale;
                 }
 
-                self.commitContainer.attr("transform",
-                  "translate(" + translate + ")"
-                  + " scale(" + scale + ")");
+                self.commitContainer.attr("transform", "translate(" + translate + ")" + " scale(" + scale + ")");
             }
 
-            function height(){ return self.svgContainer[0][0].clientHeight; };
-            function width(){ return self.svgContainer[0][0].clientWidth; };
+            function height(){ return self.svgContainer[0][0].clientHeight; }
+            function width(){ return self.svgContainer[0][0].clientWidth; }
             function render(containerId) {
             	return $q(function(resolve, reject){
 	                var svgContainer, svg;
@@ -337,7 +337,7 @@ function githubGraph($q, configuration, graphLayoutService, colors){
 
             render().then(renderCommits);
 		}
-	}
+	};
 }
 
 angular.module('app').directive('githubGraph', githubGraph);

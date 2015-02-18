@@ -1,5 +1,5 @@
 function Callback(gitHubService, $stateParams){
-	console.log($stateParams)
+	console.log($stateParams);
 
 	gitHubService.getAccessToken($stateParams.code)
 		.then(function(result){

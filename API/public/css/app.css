@@ -1,0 +1,60 @@
+body {
+  font-family: arial, 'sans-serif'; }
+
+.page-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0; }
+
+[ui-view='header'] {
+  position: absolute;
+  height: 40px;
+  background-color: #03a9f4;
+  color: white;
+  line-height: 40px;
+  width: 100%;
+  padding: 0 10px; }
+
+[ui-view='main'] {
+  position: absolute;
+  top: 50px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px; }
+
+.svg-container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border: 1px solid gray;
+  overflow: hidden; }
+
+circle.commit {
+  /*fill: green;*/
+  stroke: white;
+  stroke-width: 1; }
+
+path.commit {
+  stroke-width: 2;
+  fill: none; }
+
+rect.branch-background {
+  fill: #333; }
+
+text.branch-label {
+  fill: #efefef;
+  font-size: 11px;
+  font-family: Arial;
+  color: #efefef; }
+
+.clearfix:before, .clearfix:after {
+  content: " ";
+  display: table; }
+
+.clearfix:after {
+  clear: both; }
+
+.clearfix {
+  *zoom: 1; }

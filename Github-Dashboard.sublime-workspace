@@ -571,6 +571,7 @@
 	},
 	"file_history":
 	[
+		"/C/GitHub/Github-Dashboard/webApi/GDApi.sln",
 		"/C/Arbeid/etoto/code/master/services/RaceDayService/Database/up/0040_AddObjectLocksToIntegrationExportTriggers.sql",
 		"/C/Arbeid/etoto/code/mcfly/services/RaceDayService/Database/up/0040_AddObjectLocksToIntegrationExportTriggers.sql",
 		"/C/dev/pmu/RacecardServiceEJB.1.xsd",
@@ -697,8 +698,7 @@
 		"/C/GitHub/Sendtochrome/chrome/angular.min.js",
 		"/C/GitHub/Sendtochrome/chrome/popup.js",
 		"/C/Arbeid/etoto/code/trunk/services/ExpertService/Database/up/0173_ExpertGameSubscription_AddColumn_OriginatedFrom.sql",
-		"/C/Arbeid/withKillAll.bat",
-		"/C/GitHub/timer/bower_components/angular-material/angular-material.js"
+		"/C/Arbeid/withKillAll.bat"
 	],
 	"find":
 	{
@@ -755,6 +755,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"22",
 			"console.log",
 			"'vendor'",
 			"\n  ",
@@ -881,8 +882,7 @@
 			"\", \"",
 			"2:module",
 			"1:name",
-			"\\tAngularJS",
-			"factory"
+			"\\tAngularJS"
 		],
 		"highlight": true,
 		"in_selection": false,

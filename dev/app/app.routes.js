@@ -3,9 +3,19 @@ function RouteConfig($stateProvider, $urlRouterProvider, $locationProvider){
 	$stateProvider
 		.state('home', {
 			url: '/',
-			templateUrl: 'Commits/Commits.tpl.html',
-			controller: 'Commits',
-			controllerAs: 'commits'
+			views: {
+				main: {
+					templateUrl: 'Commits/Commits.tpl.html',
+					controller: 'Commits',
+					controllerAs: 'commits'		
+				},
+				header: {
+					templateUrl: 'Header/Authentication.tpl.html',
+					controller: 'Authentication',
+					controllerAs: 'auth'
+				}			
+			}
+
 		})
 		.state('github', {
 			url: '/git/login',

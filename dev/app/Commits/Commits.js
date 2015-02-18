@@ -4,7 +4,7 @@ function Commits(gitHubService, commitsService) {
         commits: commitsService.commits,
         branches: commitsService.branches
     };
-
+    var maxPages = 5;
     function addBranches(branches){
 		_.forEach(branches, function(b){ commitsService.addBranch(b);});
     }
@@ -20,7 +20,7 @@ function Commits(gitHubService, commitsService) {
     			.then(function(result){
    					addCommits(result.data, b.name);
    					var nextLink = getNextLink(result.headers('Link'));
-   					if(nextLink) loadMoreCommits(nextLink, b.name);
+   					if(nextLink && getPageNumber(nextLink) <= maxPages) loadMoreCommits(nextLink, b.name);
     			});
     	});
     	
@@ -32,11 +32,15 @@ function Commits(gitHubService, commitsService) {
     			addCommits(result.data, branch);
     			var nextLink = getNextLink(result.headers('Link'));
    				if(nextLink) loadMoreCommits(nextLink, branch);
-    		})
+    		});
     }
 
     function getNextLink(linkHeader){
     	return  (/<(.*)>; rel="next"/.exec(linkHeader) || {1: undefined })[1];
+    }
+
+    function getPageNumber(link){
+        return (/page=(\d)/.exec(link) || { 1: 0})[1];
     }
 
     function loadRepo(repo) {
@@ -44,13 +48,11 @@ function Commits(gitHubService, commitsService) {
     		addBranches(result.data);
     		return commitsService.branches;
     	}).then(function(result){
-    		loadCommits(result, repo)
+    		loadCommits(result, repo);
     	});
 	}
 
-loadRepo('Rebase_Test');
-
-
+    loadRepo('Etoto');
 }
 
 angular.module('app').controller('Commits', Commits);

@@ -1,14 +1,39 @@
 body{
-	font-family: 'sans-serif';
+	font-family: arial,'sans-serif';
+
+}
+
+.page-wrapper{
+  position: absolute;
+  top:0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+[ui-view='header']{
+  position: absolute;
+    height: 40px;
+    background-color: #03a9f4;
+    color: white;
+    line-height: 40px;
+    width: 100%;
+    padding: 0 10px;
+}
+
+[ui-view='main']{
+    position:absolute;
+    top: 50px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
 }
 
 
 .svg-container{
 	position: absolute;
-    top: 10px;
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
+    height: 100%;
+    width: 100%;
     border: 1px solid gray;
     overflow: hidden;
 }
