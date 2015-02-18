@@ -1,3 +1,5 @@
+$header: 60px;
+
 body{
 	font-family: arial,'sans-serif';
 
@@ -13,17 +15,17 @@ body{
 
 [ui-view='header']{
   position: absolute;
-    height: 40px;
+    height: $header;
     background-color: #03a9f4;
     color: white;
-    line-height: 40px;
+    line-height: $header;
     width: 100%;
     padding: 0 10px;
 }
 
 [ui-view='main']{
     position:absolute;
-    top: 50px;
+    top: $header+10px;
     left: 10px;
     right: 10px;
     bottom: 10px;
@@ -70,4 +72,24 @@ text.branch-label{
  
 .clearfix {
   *zoom: 1;
+}
+
+.github-avatar{
+    margin-top: ($header - ($header/1.3))/2;
+    height: $header/1.3;
+    width: $header/1.3;
+    border-radius: ($header/1.3)/2;
+    overflow: hidden;
+    float: left;
+    margin-right: 10px;
+    img{
+        height:$header/1.3;
+        width: $header/1.3;
+    }
+}
+.github-name{
+    float:left;
+}
+.github-logout{
+    float:left;
 }

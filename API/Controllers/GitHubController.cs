@@ -26,6 +26,12 @@ namespace Api.Controllers
             return Ok(Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(response.Content));
         }
 
+        [Route("github/payload"), HttpPost]
+        public IHttpActionResult Payload()
+        {
+            var payload = Request.Content.ReadAsStringAsync().Result;
+            return Ok();
+        }
     }
 
     public class AccessTokenRequest

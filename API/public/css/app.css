@@ -10,16 +10,16 @@ body {
 
 [ui-view='header'] {
   position: absolute;
-  height: 40px;
+  height: 60px;
   background-color: #03a9f4;
   color: white;
-  line-height: 40px;
+  line-height: 60px;
   width: 100%;
   padding: 0 10px; }
 
 [ui-view='main'] {
   position: absolute;
-  top: 50px;
+  top: 70px;
   left: 10px;
   right: 10px;
   bottom: 10px; }
@@ -58,3 +58,21 @@ text.branch-label {
 
 .clearfix {
   *zoom: 1; }
+
+.github-avatar {
+  margin-top: 6.92308px;
+  height: 46.15385px;
+  width: 46.15385px;
+  border-radius: 23.07692px;
+  overflow: hidden;
+  float: left;
+  margin-right: 10px; }
+  .github-avatar img {
+    height: 46.15385px;
+    width: 46.15385px; }
+
+.github-name {
+  float: left; }
+
+.github-logout {
+  float: left; }

@@ -1,21 +1,39 @@
-function gitHubService($http, GitHubSettings, CacheLocal){
+function gitHubService($http, GitHubSettings, CacheLocal, localStorageService, $q){
 	return {
 		getAccessToken: getAccessToken,
 		getBranches: getBranches,
 		getCommits: getCommits,
-		getRawUrl: getRawUrl
+		getRawUrl: getRawUrl,
+		setToken: setToken,
+		getCurrenttUser: getCurrenttUser
 	};
 
+	function setToken(token){
+		localStorageService.set('__github_token', token);
+	}
+
+	function getCurrenttUser(){
+		return $q(function(resolve, reject){
+			var token = getToken();
+			if(!token) reject('not authenticated');
+
+			getRawUrl('https://api.github.com/user').then(resolve, reject);
+		})
+	}
+
+	function getToken(){
+		return localStorageService.get('__github_token');
+	}
 
 	function getRawUrl(rawUrl){
-		return $http.get(rawUrl, {cache: CacheLocal});
+		return $http({ url: rawUrl,/* cache: CacheLocal,*/ headers: { Authorization: 'token '+getToken() }, method: 'GET'});
 	}
 	function getCommits(repo, branch){
-		return getRawUrl('https://api.github.com/repos/NorskRikstoto/'+repo+'/commits?sha='+branch);
+		return getRawUrl('https://api.github.com/repos/yngvebn/'+repo+'/commits?per_page=250&sha='+branch);
 	}
 
 	function getBranches(repo){
-		return getRawUrl('https://api.github.com/repos/NorskRikstoto/'+repo+'/branches');
+		return getRawUrl('https://api.github.com/repos/yngvebn/'+repo+'/branches');
 	}
 
 	function getAccessToken(code){

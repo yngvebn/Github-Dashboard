@@ -3,11 +3,9 @@ factory('CacheLocal', function($cacheFactory) {
   var cache = $cacheFactory('someCache', {});
   var PREFIX = 'Cacher::';
   cache.get = function(key) {
-    console.log('get', key);
     var lruEntry = localStorage.getItem(PREFIX + key);
     if (!lruEntry) return; // Cache miss
     lruEntry = JSON.parse(lruEntry);
-    console.log('hit', lruEntry);
     return lruEntry.data; // Cache hit
   };
   cache.put = function(key, value) {

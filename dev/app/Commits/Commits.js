@@ -4,7 +4,7 @@ function Commits(gitHubService, commitsService) {
         commits: commitsService.commits,
         branches: commitsService.branches
     };
-    var maxPages = 5;
+    var maxPages = 20;
     function addBranches(branches){
 		_.forEach(branches, function(b){ commitsService.addBranch(b);});
     }
@@ -52,7 +52,7 @@ function Commits(gitHubService, commitsService) {
     	});
 	}
 
-    loadRepo('Etoto');
+    loadRepo('Rebase_Test');
 }
 
 angular.module('app').controller('Commits', Commits);
