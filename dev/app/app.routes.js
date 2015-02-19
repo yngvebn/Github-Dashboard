@@ -5,6 +5,16 @@ function RouteConfig($stateProvider, $urlRouterProvider, $locationProvider){
 			url: '/',
 			views: {
 				main: {
+					templateUrl: 'Home/Welcome.tpl.html',
+					controller: 'Welcome',
+					controllerAs: 'welcome'
+				}
+			}
+		})
+		.state('commits', {
+			url: '/commits',
+			views: {
+				main: {
 					templateUrl: 'Commits/Commits.tpl.html',
 					controller: 'Commits',
 					controllerAs: 'commits'		
@@ -19,9 +29,13 @@ function RouteConfig($stateProvider, $urlRouterProvider, $locationProvider){
 		})
 		.state('github', {
 			url: '/git/login',
-			templateUrl: 'Auth/GitHub.tpl.html',
-			controllerAs: 'github',
-			controller: 'GitHub'
+			views: {
+				main: {
+					templateUrl: 'Auth/GitHub.tpl.html',
+					controllerAs: 'github',
+					controller: 'GitHub'					
+				}
+			}
 		})
 		.state('githubCallback', {
 			url: '/git/callback?code',

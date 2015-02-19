@@ -1,10 +1,9 @@
-function Callback(gitHubService, $stateParams, $state){
+function Callback(gitHubService, principal, $stateParams, $state){
 	console.log($stateParams);
 
 	gitHubService.getAccessToken($stateParams.code)
 		.then(function(result){
-			console.log(result);
-			gitHubService.setToken(result.data.access_token);
+			principal.authenticate(result.data.access_token);
 		})
 		.then(function(){
 			$state.go('home');

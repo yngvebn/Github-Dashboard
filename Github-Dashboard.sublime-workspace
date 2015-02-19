@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"bor",
+				"border"
+			],
+			[
 				"get",
 				"getToken"
 			],
@@ -368,130 +372,53 @@
 	"buffers":
 	[
 		{
-			"file": "/C/github/Github-Dashboard/dev/styles/main.scss",
+			"file": "dev/app/Home/Welcome.tpl.html",
 			"settings":
 			{
-				"buffer_size": 1317,
-				"line_ending": "Windows"
+				"buffer_size": 253,
+				"line_ending": "Windows",
+				"name": "Welcome.tpl.html"
 			}
 		},
 		{
-			"file": "/C/github/Github-Dashboard/dev/app/Commits/Commits.tpl.html",
+			"file": "dev/app/Auth/principal.js",
 			"settings":
 			{
-				"buffer_size": 306,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/github/Github-Dashboard/dev/app/Graph/githubGraph.directive.js",
-			"settings":
-			{
-				"buffer_size": 12580,
-				"line_ending": "Windows"
+				"buffer_size": 1683,
+				"line_ending": "Windows",
+				"name": "principal.js"
 			}
 		},
 		{
 			"file": "/C/github/Github-Dashboard/dev/app/Auth/Callback.js",
 			"settings":
 			{
-				"buffer_size": 348,
+				"buffer_size": 335,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "dev/app/Home/Welcome.js",
+			"settings":
+			{
+				"buffer_size": 317,
+				"line_ending": "Windows",
+				"name": "Welcome.js"
 			}
 		},
 		{
 			"file": "/C/github/Github-Dashboard/dev/app/app.routes.js",
 			"settings":
 			{
-				"buffer_size": 859,
+				"buffer_size": 1087,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/C/github/Github-Dashboard/dev/app/GraphLayoutService/graphLayout.service.js",
+			"file": "/C/github/Github-Dashboard/dev/styles/main.scss",
 			"settings":
 			{
-				"buffer_size": 2430,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/github/Github-Dashboard/dev/app/GitHub/github.service.js",
-			"settings":
-			{
-				"buffer_size": 1307,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/github/Github-Dashboard/dev/app/Auth/GitHub.tpl.html",
-			"settings":
-			{
-				"buffer_size": 493,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/github/Github-Dashboard/dev/app/Auth/Github.js",
-			"settings":
-			{
-				"buffer_size": 252,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/github/Github-Dashboard/dev/app/cacher.module.js",
-			"settings":
-			{
-				"buffer_size": 809,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/github/Github-Dashboard/dev/app/GitHub/github.settings.js",
-			"settings":
-			{
-				"buffer_size": 189,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/dev/push.json",
-			"settings":
-			{
-				"buffer_size": 6850,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/dev/rebase.json",
-			"settings":
-			{
-				"buffer_size": 7498,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/github/Github-Dashboard/dev/app/CommitsService/commits.service.js",
-			"settings":
-			{
-				"buffer_size": 1894,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/github/Github-Dashboard/dev/app/Models/Commit.js",
-			"settings":
-			{
-				"buffer_size": 990,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/github/Github-Dashboard/dev/app/Commits/Commits.js",
-			"settings":
-			{
-				"buffer_size": 1626,
+				"buffer_size": 2042,
 				"line_ending": "Windows"
 			}
 		}
@@ -499,7 +426,7 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 311.0,
+		"height": 183.0,
 		"selected_items":
 		[
 			[
@@ -708,20 +635,35 @@
 		"/C/github/Github-Dashboard/dev/app/Auth",
 		"/C/github/Github-Dashboard/dev/app/Commits",
 		"/C/github/Github-Dashboard/dev/app/CommitsService",
-		"/C/github/Github-Dashboard/dev/app/GitHub",
 		"/C/github/Github-Dashboard/dev/app/GraphLayoutService",
+		"/C/github/Github-Dashboard/dev/app/Home",
 		"/C/github/Github-Dashboard/dev/styles"
 	],
 	"file_history":
 	[
+		"/C/github/Github-Dashboard/Github-Dashboard.sublime-project",
+		"/C/github/Github-Dashboard/dev/app/Commits/Commits.js",
+		"/C/github/Github-Dashboard/dev/app/Models/Commit.js",
+		"/C/github/Github-Dashboard/dev/app/CommitsService/commits.service.js",
+		"/C/github/Github-Dashboard/dev/styles/main.scss",
+		"/C/github/Github-Dashboard/dev/app/Graph/githubGraph.directive.js",
+		"/C/github/Github-Dashboard/dev/app/Auth/Callback.js",
+		"/C/github/Github-Dashboard/dev/app/app.routes.js",
+		"/C/github/Github-Dashboard/dev/app/GraphLayoutService/graphLayout.service.js",
+		"/C/github/Github-Dashboard/dev/app/GitHub/github.service.js",
+		"/C/github/Github-Dashboard/dev/app/Auth/GitHub.tpl.html",
+		"/C/github/Github-Dashboard/dev/app/Auth/Github.js",
+		"/C/github/Github-Dashboard/dev/app/cacher.module.js",
+		"/C/github/Github-Dashboard/dev/app/GitHub/github.settings.js",
+		"/C/dev/push.json",
+		"/C/dev/rebase.json",
+		"/C/dev/calc.html",
 		"/C/github/Github-Dashboard/API/public/js/app.js",
 		"/C/github/Github-Dashboard/app.js",
 		"/C/GitHub/Github-Dashboard/dev/app/Auth/GitHub.tpl.html",
 		"/C/Arbeid/etoto/code/master/tools/Octopus/Unpacked/popup.js",
-		"/C/github/Github-Dashboard/dev/app/CommitsService/commits.service.js",
 		"/C/github/Github-Dashboard/bower.json",
 		"/C/github/Github-Dashboard/gulpfile.js",
-		"/C/github/Github-Dashboard/dev/styles/main.scss",
 		"/C/GitHub/Github-Dashboard/src/app/Models/commit.js",
 		"/C/github/Github-Dashboard/src/app/CommitTransformer/commitTransformer.service.js",
 		"/C/github/Github-Dashboard/src/app/CommitTransformer/commitTransformer.specs.js",
@@ -826,22 +768,7 @@
 		"/c/arbeid/etoto/code/master/services/RaceDayService/Database/database.nuspec",
 		"/C/Arbeid/etoto/code/master/build/commitWithComment.ps1",
 		"/C/Arbeid/etoto/code/master/frameworks/source/Castle.Facilities.Wcf/.gitignore",
-		"/C/Arbeid/etoto/code/master/services/RaceDayService/QplusDatabase/database.nuspec",
-		"/C/Arbeid/etoto/code/master/services/RaceDayService/QplusDatabase/local.run.bat",
-		"/C/dev/rikstotosvngit/users.txt",
-		"/C/GitHub/timer/package.json",
-		"/C/GitHub/Sendtochrome/chrome/angular.min.js",
-		"/C/GitHub/Sendtochrome/chrome/popup.js",
-		"/C/Arbeid/etoto/code/trunk/services/ExpertService/Database/up/0173_ExpertGameSubscription_AddColumn_OriginatedFrom.sql",
-		"/C/Arbeid/withKillAll.bat",
-		"/C/GitHub/timer/bower_components/angular-material/angular-material.js",
-		"/C/GitHub/timer/bower_components/angular-material/.bower.json",
-		"//192.168.2.131/d$/kommweb.rikstoto.no/Code/Public/js/TeamGameAdmin/ko.teamgame.overview.js",
-		"/C/Arbeid/etoto/code/hydra/services/RaceDayService/Solution/Rikstoto.RacedayService.Import.Host/app.PROD.config",
-		"/C/Arbeid/etoto/code/hydra/services/RaceDayService/Solution/Rikstoto.RacedayService.Import.Host/log4net.PROD.config",
-		"//ffvirt01.r22web.local/etoto/Logs/InfoSystemServices/InfoSystemImportService/R22WEBINFO04_InfoSystemImportService.txt",
-		"//ffvirt01.r22web.local/etoto/Logs/InfoSystemServices/InfoSystemImportService/R22WEBINFO03_InfoSystemImportService.txt",
-		"//ffvirt01.r22web.local/etoto/Logs/InfoSystemServices/InfoSystemImportService/R22WEBINFO03_InfoSystemImportService.txt.2014-11-30"
+		"/C/Arbeid/etoto/code/master/services/RaceDayService/QplusDatabase/database.nuspec"
 	],
 	"find":
 	{
@@ -1148,205 +1075,59 @@
 	"groups":
 	[
 		{
-			"selected": 12,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/C/github/Github-Dashboard/dev/styles/main.scss",
+					"file": "dev/app/Home/Welcome.tpl.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1317,
+						"buffer_size": 253,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1178,
-								1178
+								106,
+								106
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/SCSS/SCSS.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1022.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/C/github/Github-Dashboard/dev/app/Commits/Commits.tpl.html",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 306,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
+							"auto_name": "Welcome.tpl.html",
 							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "/C/github/Github-Dashboard/dev/app/Graph/githubGraph.directive.js",
+					"buffer": 1,
+					"file": "dev/app/Auth/principal.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12580,
+						"buffer_size": 1683,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3294,
-								3294
+								454,
+								454
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1560.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "/C/github/Github-Dashboard/dev/app/Auth/Callback.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 348,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								183,
-								183
-							]
-						],
-						"settings":
-						{
+							"auto_name": "principal.js",
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "/C/github/Github-Dashboard/dev/app/app.routes.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 859,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								753,
-								653
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 12,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "/C/github/Github-Dashboard/dev/app/GraphLayoutService/graphLayout.service.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2430,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								498,
-								498
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 13,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "/C/github/Github-Dashboard/dev/app/GitHub/github.service.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1307,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								549,
-								549
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1356,48 +1137,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "/C/github/Github-Dashboard/dev/app/Auth/GitHub.tpl.html",
+					"buffer": 2,
+					"file": "/C/github/Github-Dashboard/dev/app/Auth/Callback.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 493,
+						"buffer_size": 335,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								485,
-								485
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "/C/github/Github-Dashboard/dev/app/Auth/Github.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 252,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								131,
-								131
+								223,
+								223
 							]
 						],
 						"settings":
@@ -1408,58 +1161,29 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
-					"file": "/C/github/Github-Dashboard/dev/app/cacher.module.js",
+					"buffer": 3,
+					"file": "dev/app/Home/Welcome.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 809,
+						"buffer_size": 317,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								181,
-								181
+								194,
+								194
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "/C/github/Github-Dashboard/dev/app/GitHub/github.settings.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 189,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								78,
-								118
-							]
-						],
-						"settings":
-						{
+							"auto_name": "Welcome.js",
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
@@ -1470,106 +1194,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 11,
-					"file": "/C/dev/push.json",
+					"buffer": 4,
+					"file": "/C/github/Github-Dashboard/dev/app/app.routes.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6850,
+						"buffer_size": 1087,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								45,
-								85
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "/C/dev/rebase.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7498,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								47,
-								87
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "/C/github/Github-Dashboard/dev/app/CommitsService/commits.service.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1894,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1894,
-								1894
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 935.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 14,
-					"type": "text"
-				},
-				{
-					"buffer": 14,
-					"file": "/C/github/Github-Dashboard/dev/app/Models/Commit.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 990,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								141,
-								141
+								664,
+								664
 							]
 						],
 						"settings":
@@ -1578,40 +1216,40 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 40.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 15,
-					"file": "/C/github/Github-Dashboard/dev/app/Commits/Commits.js",
+					"buffer": 5,
+					"file": "/C/github/Github-Dashboard/dev/styles/main.scss",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1626,
+						"buffer_size": 2042,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								623,
-								623
+								45,
+								37
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
+							"syntax": "Packages/SCSS/SCSS.tmLanguage",
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
