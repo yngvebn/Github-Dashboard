@@ -23,6 +23,9 @@ var gulp          = require('gulp'),
     bump          = require('gulp-bump'),
     pck           = require('./package.json'),
     karma         = require('gulp-karma'),
+    livereload    = require('gulp-livereload'),
+    nodemon       = require('gulp-nodemon'),
+    browserSync   = require('browser-sync'),
     webdriver_standalone = require('gulp-protractor').webdriver_standalone,
     protractor = require("gulp-protractor").protractor;
 
@@ -37,7 +40,7 @@ var paths = {
                       'jasmine/github_data.js',
                       'tmp/js/vendor.js',
                       'bower_components/angular-mocks/angular-mocks.js',
-                      'API/public/js/app.js',
+                      'tmp/js/app.js',
                       'dev/app/**/*.spec.js',
                       'dev/app/**/*.specs.js'
                     ],
@@ -54,10 +57,12 @@ var paths = {
   vendorCss:        ['dev/vendor/css/**/*.css'],
   vendorScss:        ['dev/vendor/css/**/*.scss'],
   specFolder:       ['spec/**/*_spec.js'],
-  tmpFolder:        'API/public',
-  tmpJavascript:    'API/public/js',
-  tmpCss:           'API/public/css',
-  tmpImages:        'API/public/images',
+  apiFolder:        'node_api/**/*.js',
+  apiApp:        'node_api/app.js',
+  tmpFolder:        'tmp',
+  tmpJavascript:    'tmp/js',
+  tmpCss:           'tmp/css',
+  tmpImages:        'tmp/images',
   distFolder:       'dist',
   distJavascript:   'dist/js',
   distCss:          'dist/css',
@@ -144,7 +149,7 @@ gulp.task('indexHtml', function() {
 });
 
 gulp.task('lint', function() {
-  return gulp.src(paths.appJavascript.concat(paths.specFolder))
+  return gulp.src(paths.appJavascript.concat(paths.specFolder).concat(paths.apiFolder))
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'));
 });
@@ -154,9 +159,18 @@ gulp.task('clean', function() {
     .pipe(rimraf());
 });
 
+gulp.task('api', function(){
+  nodemon({ script: paths.apiApp, ext:'js', watch: paths.apiFolder})
+      .on('change', ['lint'])
+      .on('restart', function () {
+        console.log('restarted!')
+      })
+})
+
 gulp.task('build', ['vendor','lint', 'scripts', 'styles','images', 'indexHtml', /*'ngMaterialThemes'*/]);
 
-gulp.task('watch', ['build', 'webserver'], function() {
+gulp.task('watch', ['build','api', 'livereload'], function() {
+  livereload.listen();
   gulp.watch(paths.appJavascript, ['lint', 'scripts', 'test']);
   gulp.watch(paths.appTemplates, ['scripts']);
   gulp.watch(paths.specsJavascript, ['test']);
@@ -166,6 +180,10 @@ gulp.task('watch', ['build', 'webserver'], function() {
   gulp.watch(paths.indexHtml, ['indexHtml']);
   gulp.watch(paths.appStyles, ['styles']);
   gulp.watch(paths.bower, ['vendor', 'test']);
+});
+
+gulp.task('livereload', function(){
+  livereload({ start: true });
 });
 
 

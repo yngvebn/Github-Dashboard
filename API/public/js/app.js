@@ -85,6 +85,92 @@ function RouteConfig($stateProvider, $urlRouterProvider, $locationProvider){
 RouteConfig.$inject = ["$stateProvider", "$urlRouterProvider", "$locationProvider"];
 
 angular.module('app').config(RouteConfig);
+function Callback(gitHubService, $stateParams, $state){
+	console.log($stateParams);
+
+	gitHubService.getAccessToken($stateParams.code)
+		.then(function(result){
+			console.log(result);
+			gitHubService.setToken(result.data.access_token);
+		})
+		.then(function(){
+			$state.go('home');
+		});
+}
+Callback.$inject = ["gitHubService", "$stateParams", "$state"];
+
+angular.module('app').controller('Callback', Callback);
+function GitHub(GitHubSettings, gitHubService){
+	var vm = this;
+	vm.settings = GitHubSettings;
+	vm.user = null;
+
+	gitHubService.getCurrenttUser().then(function(result){
+		vm.user = result.data;
+	})
+}
+GitHub.$inject = ["GitHubSettings", "gitHubService"];
+
+angular.module('app').controller('GitHub', GitHub);
+function Commits(gitHubService, commitsService) {
+    var vm = this;
+    vm.commitData = {
+        commits: commitsService.commits,
+        branches: commitsService.branches
+    };
+    var maxPages = 20;
+    function addBranches(branches){
+		_.forEach(branches, function(b){ commitsService.addBranch(b);});
+    }
+
+    function addCommits(commits, branch){
+    	commitsService.add(commits, branch);
+        
+    }
+
+    function loadCommits(branches, repo){
+    	_.forEach(branches, function(b){
+    		gitHubService.getCommits(repo, b.name)
+    			.then(function(result){
+   					addCommits(result.data, b.name);
+   					var nextLink = getNextLink(result.headers('Link'));
+   					if(nextLink && getPageNumber(nextLink) <= maxPages) loadMoreCommits(nextLink, b.name);
+    			});
+    	});
+    	
+    }
+
+    function loadMoreCommits(nextLink, branch){
+    	gitHubService.getRawUrl(nextLink)
+    		.then(function(result){
+    			addCommits(result.data, branch);
+    			var nextLink = getNextLink(result.headers('Link'));
+   				if(nextLink) loadMoreCommits(nextLink, branch);
+    		});
+    }
+
+    function getNextLink(linkHeader){
+    	return  (/<(.*)>; rel="next"/.exec(linkHeader) || {1: undefined })[1];
+    }
+
+    function getPageNumber(link){
+        return (/page=(\d)/.exec(link) || { 1: 0})[1];
+    }
+
+    function loadRepo(repo) {
+    	gitHubService.getBranches(repo).then(function(result){
+    		addBranches(result.data);
+    		return commitsService.branches;
+    	}).then(function(result){
+    		loadCommits(result, repo);
+    	});
+	}
+
+    loadRepo('Rebase_Test');
+}
+Commits.$inject = ["gitHubService", "commitsService"];
+
+angular.module('app').controller('Commits', Commits);
 function commitsService(Commit, Branch) {
     var data = {
         branches: [],
@@ -160,92 +246,6 @@ function commitsService(Commit, Branch) {
 commitsService.$inject = ["Commit", "Branch"];
 
 angular.module('app').factory('commitsService', commitsService);
-function Commits(gitHubService, commitsService) {
-    var vm = this;
-    vm.commitData = {
-        commits: commitsService.commits,
-        branches: commitsService.branches
-    };
-    var maxPages = 20;
-    function addBranches(branches){
-		_.forEach(branches, function(b){ commitsService.addBranch(b);});
-    }
-
-    function addCommits(commits, branch){
-    	commitsService.add(commits, branch);
-        
-    }
-
-    function loadCommits(branches, repo){
-    	_.forEach(branches, function(b){
-    		gitHubService.getCommits(repo, b.name)
-    			.then(function(result){
-   					addCommits(result.data, b.name);
-   					var nextLink = getNextLink(result.headers('Link'));
-   					if(nextLink && getPageNumber(nextLink) <= maxPages) loadMoreCommits(nextLink, b.name);
-    			});
-    	});
-    	
-    }
-
-    function loadMoreCommits(nextLink, branch){
-    	gitHubService.getRawUrl(nextLink)
-    		.then(function(result){
-    			addCommits(result.data, branch);
-    			var nextLink = getNextLink(result.headers('Link'));
-   				if(nextLink) loadMoreCommits(nextLink, branch);
-    		});
-    }
-
-    function getNextLink(linkHeader){
-    	return  (/<(.*)>; rel="next"/.exec(linkHeader) || {1: undefined })[1];
-    }
-
-    function getPageNumber(link){
-        return (/page=(\d)/.exec(link) || { 1: 0})[1];
-    }
-
-    function loadRepo(repo) {
-    	gitHubService.getBranches(repo).then(function(result){
-    		addBranches(result.data);
-    		return commitsService.branches;
-    	}).then(function(result){
-    		loadCommits(result, repo);
-    	});
-	}
-
-    loadRepo('Rebase_Test');
-}
-Commits.$inject = ["gitHubService", "commitsService"];
-
-angular.module('app').controller('Commits', Commits);
-function Callback(gitHubService, $stateParams, $state){
-	console.log($stateParams);
-
-	gitHubService.getAccessToken($stateParams.code)
-		.then(function(result){
-			console.log(result);
-			gitHubService.setToken(result.data.access_token);
-		})
-		.then(function(){
-			$state.go('home');
-		});
-}
-Callback.$inject = ["gitHubService", "$stateParams", "$state"];
-
-angular.module('app').controller('Callback', Callback);
-function GitHub(GitHubSettings, gitHubService){
-	var vm = this;
-	vm.settings = GitHubSettings;
-	vm.user = null;
-
-	gitHubService.getCurrenttUser().then(function(result){
-		vm.user = result.data;
-	})
-}
-GitHub.$inject = ["GitHubSettings", "gitHubService"];
-
-angular.module('app').controller('GitHub', GitHub);
 function gitHubService($http, GitHubSettings, CacheLocal, localStorageService, $q){
 	return {
 		getAccessToken: getAccessToken,
@@ -286,7 +286,8 @@ function gitHubService($http, GitHubSettings, CacheLocal, localStorageService, $
 
 	function getAccessToken(code){
 		var options = {
-			code: code 
+			code: code,
+			scope: 'user, repo'
 		};
 		angular.extend(options, GitHubSettings);
 		return $http.post('http://localhost:3334/api/github/accesstoken', options);
@@ -722,12 +723,6 @@ function graphLayoutService(configuration, $q) {
 graphLayoutService.$inject = ["configuration", "$q"];
 
 angular.module('app').factory('graphLayoutService', graphLayoutService);
-function Authentication(){
-
-}
-
-angular.module('app').controller('Authentication', Authentication);
-
 (function(){
 	function Branch(data){
 		this.name = '';
@@ -792,8 +787,14 @@ angular.module('app').controller('Authentication', Authentication);
 	angular.module('app').value('Commit', Commit);
 
 }());
-angular.module("Templates").run(["$templateCache", function($templateCache) {$templateCache.put("Commits/Commits.tpl.html","<github-graph commits=\"commits.commitData.commits\" branches=\"commits.commitData.branches\"><ul><li ng-repeat=\"branch in commits.commitData.branches\">{{branch.name}}</li></ul><ul><li ng-repeat=\"commit in commits.commitData.commits\">{{commit.date}} - {{commit.sha}} - {{commit.branches}}</li></ul></github-graph>");
-$templateCache.put("Auth/Callback.tpl.html","");
-$templateCache.put("Auth/GitHub.tpl.html","<div ng-if=\"!github.user\">We\'re going to now talk to the GitHub API. Ready? <a ng-href=\"https://github.com/login/oauth/authorize?scope=user:email&client_id={{github.settings.client_id}}\">Click here</a> to begin!</div><div ng-if=\"github.user\"><div class=\"github-avatar\"><img ng-src=\"{{github.user.avatar_url}}\"></div><div class=\"github-name\">{{github.user.name}}&nbsp;-&nbsp;</div><div class=\"github-logout\"><a href=\"\" ng-click=\"github.signout()\">Sign out</a></div></div>");
+function Authentication(){
+
+}
+
+angular.module('app').controller('Authentication', Authentication);
+
+angular.module("Templates").run(["$templateCache", function($templateCache) {$templateCache.put("Auth/Callback.tpl.html","");
+$templateCache.put("Auth/GitHub.tpl.html","<div ng-if=\"!github.user\">We\'re going to now talk to the GitHub API. Ready? <a ng-href=\"https://github.com/login/oauth/authorize?scope=user,repo&client_id={{github.settings.client_id}}\">Click here</a> to begin!</div><div ng-if=\"github.user\"><div class=\"github-avatar\"><img ng-src=\"{{github.user.avatar_url}}\"></div><div class=\"github-name\">{{github.user.name}}&nbsp;-&nbsp;</div><div class=\"github-logout\"><a href=\"\" ng-click=\"github.signout()\">Sign out</a></div></div>");
+$templateCache.put("Commits/Commits.tpl.html","<github-graph commits=\"commits.commitData.commits\" branches=\"commits.commitData.branches\"><ul><li ng-repeat=\"branch in commits.commitData.branches\">{{branch.name}}</li></ul><ul><li ng-repeat=\"commit in commits.commitData.commits\">{{commit.date}} - {{commit.sha}} - {{commit.branches}}</li></ul></github-graph>");
 $templateCache.put("Header/Authentication.tpl.html","");}]);
 })();

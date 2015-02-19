@@ -5,7 +5,7 @@ function GitHub(GitHubSettings, gitHubService){
 
 	gitHubService.getCurrenttUser().then(function(result){
 		vm.user = result.data;
-	})
+	});
 }
 
 angular.module('app').controller('GitHub', GitHub);

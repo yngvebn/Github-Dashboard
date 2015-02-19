@@ -18,7 +18,7 @@ function gitHubService($http, GitHubSettings, CacheLocal, localStorageService, $
 			if(!token) reject('not authenticated');
 
 			getRawUrl('https://api.github.com/user').then(resolve, reject);
-		})
+		});
 	}
 
 	function getToken(){
@@ -38,7 +38,8 @@ function gitHubService($http, GitHubSettings, CacheLocal, localStorageService, $
 
 	function getAccessToken(code){
 		var options = {
-			code: code 
+			code: code,
+			scope: 'user, repo'
 		};
 		angular.extend(options, GitHubSettings);
 		return $http.post('http://localhost:3334/api/github/accesstoken', options);

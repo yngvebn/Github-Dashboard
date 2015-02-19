@@ -4,6 +4,7 @@ function Commits(gitHubService, commitsService) {
         commits: commitsService.commits,
         branches: commitsService.branches
     };
+    
     var maxPages = 20;
     function addBranches(branches){
 		_.forEach(branches, function(b){ commitsService.addBranch(b);});

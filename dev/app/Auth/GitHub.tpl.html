@@ -1,6 +1,6 @@
  <div ng-if="!github.user">
       We're going to now talk to the GitHub API. Ready?
-      <a ng-href="https://github.com/login/oauth/authorize?scope=user:email&client_id={{github.settings.client_id}}">Click here</a> to begin!
+      <a ng-href="https://github.com/login/oauth/authorize?scope=user,repo&client_id={{github.settings.client_id}}">Click here</a> to begin!
  </div>
  <div ng-if="github.user">
  	<div class="github-avatar"><img ng-src="{{github.user.avatar_url}}"></div><div class="github-name">{{github.user.name}}&nbsp;-&nbsp;</div><div class="github-logout"><a href="" ng-click="github.signout()">Sign out</a></div>
