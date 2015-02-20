@@ -759,6 +759,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"}\n",
 			"isIdentityResolved",
 			"build",
 			"StartService",
@@ -885,8 +886,7 @@
 			"$3",
 			"\"]",
 			"[\"",
-			"\", \"",
-			"2:module"
+			"\", \""
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1080,9 +1080,17 @@
 	},
 	"select_symbol":
 	{
-		"height": 196.0,
+		"height": 392.0,
 		"selected_items":
 		[
+			[
+				"events",
+				"events"
+			],
+			[
+				"principal",
+				"Principal"
+			],
 			[
 				"branch",
 				"Branch"
@@ -1116,7 +1124,7 @@
 				"md-icon"
 			]
 		],
-		"width": 488.0
+		"width": 840.0
 	},
 	"settings":
 	{
