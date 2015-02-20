@@ -369,66 +369,24 @@
 			]
 		]
 	},
-	"buffers":
-	[
-		{
-			"file": "dev/app/Home/Welcome.tpl.html",
-			"settings":
-			{
-				"buffer_size": 253,
-				"line_ending": "Windows",
-				"name": "Welcome.tpl.html"
-			}
-		},
-		{
-			"file": "dev/app/Auth/principal.js",
-			"settings":
-			{
-				"buffer_size": 1683,
-				"line_ending": "Windows",
-				"name": "principal.js"
-			}
-		},
-		{
-			"file": "/C/github/Github-Dashboard/dev/app/Auth/Callback.js",
-			"settings":
-			{
-				"buffer_size": 335,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "dev/app/Home/Welcome.js",
-			"settings":
-			{
-				"buffer_size": 317,
-				"line_ending": "Windows",
-				"name": "Welcome.js"
-			}
-		},
-		{
-			"file": "/C/github/Github-Dashboard/dev/app/app.routes.js",
-			"settings":
-			{
-				"buffer_size": 1087,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/github/Github-Dashboard/dev/styles/main.scss",
-			"settings":
-			{
-				"buffer_size": 2042,
-				"line_ending": "Windows"
-			}
-		}
-	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 183.0,
+		"height": 392.0,
 		"selected_items":
 		[
+			[
+				"javas",
+				"Javascript Beautify"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"scss",
+				"Set Syntax: CSS"
+			],
 			[
 				"json",
 				"Pretty JSON: Format (Pretty Print) JSON"
@@ -438,24 +396,12 @@
 				"Package Control: Install Package"
 			],
 			[
-				"scss",
-				"Set Syntax: SCSS"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
-			],
-			[
 				"ja",
 				"Javascript Beautify"
 			],
 			[
 				"java",
 				"Javascript Beautify"
-			],
-			[
-				"javas",
-				"Set Syntax: JavaScript"
 			],
 			[
 				"git",
@@ -602,7 +548,7 @@
 				"Set Syntax: Powershell v2"
 			]
 		],
-		"width": 600.0
+		"width": 472.0
 	},
 	"console":
 	{
@@ -627,20 +573,14 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
-	"expanded_folders":
-	[
-		"/C/github/Github-Dashboard",
-		"/C/github/Github-Dashboard/dev",
-		"/C/github/Github-Dashboard/dev/app",
-		"/C/github/Github-Dashboard/dev/app/Auth",
-		"/C/github/Github-Dashboard/dev/app/Commits",
-		"/C/github/Github-Dashboard/dev/app/CommitsService",
-		"/C/github/Github-Dashboard/dev/app/GraphLayoutService",
-		"/C/github/Github-Dashboard/dev/app/Home",
-		"/C/github/Github-Dashboard/dev/styles"
-	],
 	"file_history":
 	[
+		"/C/github/Github-Dashboard/dev/app/Home/Signin.js",
+		"/C/github/Github-Dashboard/dev/app/Home/Signin.tpl.html",
+		"/C/Arbeid/etoto/code/master/clients/rikstoto.no/Solution/Rikstoto.Etoto.Web/UI/ProgramQuponWindow.css",
+		"/C/Arbeid/etoto/code/master/tools/Start-EtotoService.psm1",
+		"/C/Arbeid/etoto/code/master/clients/rikstoto.no/Solution/Rikstoto.Etoto.Web/UI/sass.js",
+		"/C/GitHub/Github-Dashboard/node_modules/express-livereload/index.js",
 		"/C/github/Github-Dashboard/Github-Dashboard.sublime-project",
 		"/C/github/Github-Dashboard/dev/app/Commits/Commits.js",
 		"/C/github/Github-Dashboard/dev/app/Models/Commit.js",
@@ -726,7 +666,6 @@
 		"/C/Arbeid/etoto/code/master/tools/Git-Powershell/Get-CurrentBrach.psm1",
 		"/C/arbeid/etoto/code/master/.gitignore",
 		"/C/Arbeid/etoto/code/master/services/RaceDayService/QplusDatabase/runFirstAfterUp/01.LOCAL.BUILD.EVERYTIME.QplusDummyData_1.ENV.sql",
-		"/C/Arbeid/etoto/code/master/tools/Start-EtotoService.psm1",
 		"/C/Arbeid/etoto/code/master/ITOps/Solution/Rikstoto.ITOps.Host/itops.nuspec",
 		"/C/Arbeid/etoto/code/master/ExternalApi/Solution/Rikstoto.ExternalApi.Host/externalapi.nuspec",
 		"/C/arbeid/etoto/code/master/tools/Git-Powershell/test2.txt",
@@ -763,16 +702,11 @@
 		"/c/arbeid/etoto/code/master/services/EconomyService/Database/database.nuspec",
 		"/c/arbeid/etoto/code/master/services/ExpertService/Database/database.nuspec",
 		"/c/arbeid/etoto/code/master/services/ExpertService/ModuleDatabase/database.nuspec",
-		"/c/arbeid/etoto/code/master/services/PrizeNotificationService/Database/database.nuspec",
-		"/c/arbeid/etoto/code/master/services/PrizePaymentService/Database/database.nuspec",
-		"/c/arbeid/etoto/code/master/services/RaceDayService/Database/database.nuspec",
-		"/C/Arbeid/etoto/code/master/build/commitWithComment.ps1",
-		"/C/Arbeid/etoto/code/master/frameworks/source/Castle.Facilities.Wcf/.gitignore",
-		"/C/Arbeid/etoto/code/master/services/RaceDayService/QplusDatabase/database.nuspec"
+		"/c/arbeid/etoto/code/master/services/PrizeNotificationService/Database/database.nuspec"
 	],
 	"find":
 	{
-		"height": 50.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -825,6 +759,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"isIdentityResolved",
+			"build",
+			"StartService",
 			"console.log",
 			"'vendor'",
 			"\n  ",
@@ -949,10 +886,7 @@
 			"\"]",
 			"[\"",
 			"\", \"",
-			"2:module",
-			"1:name",
-			"\\tAngularJS",
-			"factory"
+			"2:module"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1072,189 +1006,6 @@
 		"whole_word": false,
 		"wrap": true
 	},
-	"groups":
-	[
-		{
-			"selected": 0,
-			"sheets":
-			[
-				{
-					"buffer": 0,
-					"file": "dev/app/Home/Welcome.tpl.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 253,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								106,
-								106
-							]
-						],
-						"settings":
-						{
-							"auto_name": "Welcome.tpl.html",
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "dev/app/Auth/principal.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1683,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								454,
-								454
-							]
-						],
-						"settings":
-						{
-							"auto_name": "principal.js",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "/C/github/Github-Dashboard/dev/app/Auth/Callback.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 335,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								223,
-								223
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "dev/app/Home/Welcome.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 317,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								194,
-								194
-							]
-						],
-						"settings":
-						{
-							"auto_name": "Welcome.js",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "/C/github/Github-Dashboard/dev/app/app.routes.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1087,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								664,
-								664
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 40.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "/C/github/Github-Dashboard/dev/styles/main.scss",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2042,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								45,
-								37
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/SCSS/SCSS.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				}
-			]
-		}
-	],
 	"incremental_find":
 	{
 		"height": 22.0
@@ -1294,7 +1045,6 @@
 	{
 		"height": 0.0
 	},
-	"project": "Github-Dashboard.sublime-project",
 	"replace":
 	{
 		"height": 62.0
@@ -1368,7 +1118,6 @@
 		],
 		"width": 488.0
 	},
-	"selected_group": 0,
 	"settings":
 	{
 	},
@@ -1376,7 +1125,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 370.0,
+	"side_bar_width": 270.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

@@ -169,8 +169,7 @@ gulp.task('api', function(){
 
 gulp.task('build', ['vendor','lint', 'scripts', 'styles','images', 'indexHtml', /*'ngMaterialThemes'*/]);
 
-gulp.task('watch', ['build','api', 'livereload'], function() {
-  livereload.listen();
+gulp.task('watch', ['build','api'], function() {
   gulp.watch(paths.appJavascript, ['lint', 'scripts', 'test']);
   gulp.watch(paths.appTemplates, ['scripts']);
   gulp.watch(paths.specsJavascript, ['test']);

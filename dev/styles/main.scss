@@ -15,13 +15,6 @@ body{
 }
 
 [ui-view='header']{
-  position: absolute;
-    height: $header;
-    /*background-color: #03a9f4;*/
-    color: white;
-    line-height: $header;
-    width: 100%;
-    padding: 0 10px;
 }
 
 [ui-view='main']{
