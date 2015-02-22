@@ -34,4 +34,4 @@ test
 dist
 tmp
 
-timer.sublime-workspace
+*.sublime-workspace
