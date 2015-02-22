@@ -12,24 +12,7 @@ function RoutingConfig($stateProvider, $urlRouterProvider, $locationProvider){
                 ]
             }
         })
-        .state('dashboard', {
-            url: '/dashboard',
-            views: {
-                main: {
-                    templateUrl: 'Dashboard/Dashboard.tpl.html',
-                    controller: 'Dashboard',
-                    controllerAs: 'dashboard'
-                }
-            },
-            resolve: {
-                authorize: ['authorization',
-                    function(authorization) {
-                        return authorization.authorize();
-                    }
-                ]
-            }
-        })
-        .state('commits', {
+       .state('commits', {
             url: '/commits',
             views: {
                 main: {

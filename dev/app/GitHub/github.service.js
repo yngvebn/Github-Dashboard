@@ -5,11 +5,26 @@ function gitHubService($http, GitHubSettings, CacheLocal, localStorageService, $
 		getCommits: getCommits,
 		getRawUrl: getRawUrl,
 		setToken: setToken,
-		getCurrenttUser: getCurrenttUser
+		getCurrenttUser: getCurrenttUser,
+		getRepositories: getRepositories,
+		getOrganizations: getOrganizations
 	};
 
 	function setToken(token){
 		localStorageService.set('__github_token', token);
+	}
+
+
+	function getOrganizations(){
+		return getCurrenttUser().then(function(result){
+			return getRawUrl(result.data['organizations_url']).then(function(r){ return r.data; });
+		});
+	}
+
+	function getRepositories(){
+		return getCurrenttUser().then(function(result){
+			return getRawUrl(result.data['repos_url']).then(function(r){ return r.data; });
+		});
 	}
 
 	function getCurrenttUser(){

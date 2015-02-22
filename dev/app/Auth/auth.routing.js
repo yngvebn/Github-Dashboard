@@ -1,4 +1,4 @@
-function RouteConfig($stateProvider){
+function AuthRouteConfig($stateProvider){
 	$stateProvider
         .state('signin', {
             url: '/signin',
@@ -23,4 +23,4 @@ function RouteConfig($stateProvider){
         });
 }
 
-angular.module('app.views.auth').config(RouteConfig);
+angular.module('app.views.auth').config(AuthRouteConfig);
