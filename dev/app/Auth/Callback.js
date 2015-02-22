@@ -12,4 +12,4 @@ function Callback(gitHubService, principal, $stateParams, $state, $window){
 	}
 }
 
-angular.module('app').controller('Callback', Callback);
+angular.module('app.views.auth').controller('Callback', Callback);

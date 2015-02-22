@@ -18,4 +18,4 @@ function Signin(principal, GitHubSettings, $window, $timeout, $rootScope, $state
     }
 }
 
-angular.module('app').controller('Signin', Signin);
+angular.module('app.views.auth').controller('Signin', Signin);
