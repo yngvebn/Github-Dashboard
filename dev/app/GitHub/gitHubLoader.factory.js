@@ -17,13 +17,14 @@ function gitHubLoader($q, gitHubService){
 
 		function loadPage(url){
 			gitHubService.getRawUrl(url).then(function(result){
-				deferred.notify(result.data);
-				var nextLink = getNextLink(result.headers('Link'));
+				
+					var nextLink = getNextLink(result.headers('Link'));
    					if(nextLink){
+   						deferred.notify(result.data);
    						loadPage(nextLink);
    					}
    					else{
-   						deferred.resolve();
+   						deferred.resolve(result.data);
    					}
 			})
 		}

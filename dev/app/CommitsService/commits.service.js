@@ -1,16 +1,51 @@
-function commitsService(Commit, Branch) {
+function commitsService(Commit, Branch, gitHubLoader, gitHubUrls, string) {
     var data = {
         branches: [],
         commits: []
     };
 
-    return {
+    var service = {
         add: add,
         commits: data.commits,
         branches: data.branches,
         findCommit: findCommit,
-        addBranch: addBranch
+        addBranch: addBranch,
+        loadRepository: loadRepository
     };
+    return service;
+
+    function loadError() {
+
+    }
+
+    function loadCommits(repositoryId, sinceDate) {
+        _.forEach(data.branches, function(b) {
+            gitHubLoader.load(gitHubUrls.commits(repositoryId, {
+                sha: b.sha, per_page: 250, since: sinceDate
+            }))
+                .then(function(result) {
+                        service.add(result, b.name);
+                    }, loadError,
+                    function(result) {
+                        service.add(result, b.name);
+                    });
+        });
+    }
+
+    function loadRepository(repositoryId, since) {
+        data.branches.splice(0,data.branches.length);
+        data.commits.splice(0,data.commits.length);
+
+        gitHubLoader.load(gitHubUrls.branches(repositoryId))
+            .then(function(result) {
+                _.forEach(result, function(b) {
+                    service.addBranch(b);
+                });
+            })
+            .then(function() {
+                loadCommits(repositoryId, since);
+            });
+    }
 
     function addBranch(branch) {
         if (!findBranch(branch.name)) {
@@ -44,6 +79,7 @@ function commitsService(Commit, Branch) {
     }
 
     function add(commits, branch) {
+        //console.log(string.format('adding {0} commits to branch {1}', commits.length, branch));
         _.chain(commits)
             .map(function(c) {
                 return new Commit({
@@ -65,6 +101,8 @@ function commitsService(Commit, Branch) {
                 }
                 findBranch.lastCommit = item.date;
             });
+
+
 
     }
 

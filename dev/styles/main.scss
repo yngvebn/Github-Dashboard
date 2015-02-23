@@ -20,7 +20,7 @@ body{
 
 [ui-view='main']{
     display: flex;
-    align-items: flex-start;
+    align-items: stretch;
     justify-content: center;
     height: 100%;
     flex-direction: row;
@@ -71,9 +71,13 @@ body{
   
 }
 
+.__github_graph{
+  width: 100%;
+  min-height: 400px;
+}
+
 
 .svg-container{
-	position: absolute;
     height: 100%;
     width: 100%;
     border: 1px solid gray;

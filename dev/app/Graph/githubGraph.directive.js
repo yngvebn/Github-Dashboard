@@ -12,7 +12,6 @@ function githubGraph($q, configuration, graphLayoutService, colors){
 			self.svgContainer = null;
             self.element = element;
             scope.$watch('commits', _.debounce(function(commits) {
-                    console.log('redrawing');
                     scope.$apply(function(){
                     graphLayoutService.updatePositions(scope.commits, scope.branches).then(renderCommits);
                 });
@@ -317,7 +316,7 @@ function githubGraph($q, configuration, graphLayoutService, colors){
                     
 	                svg.attr('id', '__github_graph')
 	                    .attr('width', '100%')
-	                    .attr('height', '100%')
+	                    .attr('height', '400px')
                         .call(zoom);
            
                        
