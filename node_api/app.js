@@ -1,7 +1,7 @@
 var restify = require('restify'),
     request = require('request'),
     express = require('express'),
-    app = express(),
+    app =express(),
     server = require('http').Server(app),
     path = require('path'),
     io = require('socket.io')(server),
@@ -11,8 +11,10 @@ app.settings = {
     env: 'dev'
 };
 
+app.use(require('connect-livereload')());
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../tmp'));
+
 
 app.post('/api/github/accesstoken', function(req, res) {
     var options = {

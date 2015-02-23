@@ -1,4 +1,9 @@
-<div class="centered-content"><h1>Dashboard HELLO!!!</h1></div>
-<ul>
-<li ng-repeat="text in dashboard.messages">{{text}}</li>
-</ul>
+<section ng-repeat="group in dashboard.repositoryGroups | orderBy:order" class="repo-group">
+	<h2>{{::group.name}}</h2>
+	<ul class="repo-group__repo-list">
+		<li ng-repeat="repo in group.repos" class="repo-group__repo-item">
+			<a href="dashboard/{{::repo.id}}">{{::repo.name}}</a>
+		</li>
+	</ul>
+</section>
+

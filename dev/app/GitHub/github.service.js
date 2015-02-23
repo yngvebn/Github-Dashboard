@@ -10,6 +10,8 @@ function gitHubService($http, GitHubSettings, CacheLocal, localStorageService, $
 		getOrganizations: getOrganizations
 	};
 
+
+
 	function setToken(token){
 		localStorageService.set('__github_token', token);
 	}
@@ -22,9 +24,9 @@ function gitHubService($http, GitHubSettings, CacheLocal, localStorageService, $
 	}
 
 	function getRepositories(){
-		return getCurrenttUser().then(function(result){
-			return getRawUrl(result.data['repos_url']).then(function(r){ return r.data; });
-		});
+		
+			return getRawUrl('https://api.github.com/user/repos?per_page=250').then(function(r){ return r.data; });
+		
 	}
 
 	function getCurrenttUser(){

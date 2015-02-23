@@ -1,0 +1,17 @@
+.repo-group{
+	min-width: 250px;
+	.repo-group__repo-list{
+		list-style: none;
+		margin-left: 0;
+		padding-left: 0;
+	}
+
+	.repo-group__repo-item{
+		margin: 0.5em 0.5em 0.5em 0;
+		line-height: 1.8em;
+		background-color: white;
+		border: 1px solid #ccc;
+		padding: 0.5em;
+	}
+
+}

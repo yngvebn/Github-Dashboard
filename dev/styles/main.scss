@@ -1,17 +1,18 @@
+@import "_dashboard";
 $header: 60px;
 
 body{
 	font-family: 'Segoe UI','sans-serif';
-  background-color: #efefef;
+  background-color: #f9f9f9;
 
 }
 
 .page-wrapper{
-  position: absolute;
+ /* position: absolute;
   top:0;
   right: 0;
   left: 0;
-  bottom: 0;
+  bottom: 0;*/
 }
 
 [ui-view='header']{
@@ -19,16 +20,15 @@ body{
 
 [ui-view='main']{
     display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-    
-/*
-    position:absolute;
-    top: $header+10px;
-    left: 10px;
-    right: 10px;
-    bottom: 10px;*/
+    align-items: flex-start;
+    justify-content: center;
+    height: 100%;
+    flex-direction: row;
+
+
+    > *{
+       margin: 0 auto; 
+    }
 }
 
 .centered-content{
@@ -36,6 +36,9 @@ body{
   text-align: center;
 }
 
+.col{
+
+}
 
 .btn{
   cursor: pointer;
