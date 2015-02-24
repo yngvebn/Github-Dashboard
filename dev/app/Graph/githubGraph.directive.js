@@ -1,11 +1,12 @@
-function githubGraph($q, configuration, graphLayoutService, colors){
+function githubGraph($q, configuration, graphLayoutService, colors, $compile){
 	return {
 		restrict: 'E',
 		template: '<div class="__github_graph clearfix"></div>',
 		replace: true,
 		scope: {
             branches: '=',
-            commits: '='
+            commits: '=',
+            clickCommit: '='
         },
 		link: function(scope, element){
 			var self ={};
@@ -13,11 +14,18 @@ function githubGraph($q, configuration, graphLayoutService, colors){
             self.element = element;
             scope.$watch('commits', _.debounce(function(commits) {
                     scope.$apply(function(){
-                    graphLayoutService.updatePositions(scope.commits, scope.branches).then(renderCommits);
+                    graphLayoutService.updatePositions(scope.commits, scope.branches)
+                    .then(renderCommits);
+                    //.then(compile);
                 });
             }, 2000), true);
 
           
+            function compile(){
+                console.log(arguments);
+                //$compile(self.element)(scope);
+            }
+
             function findCommit(sha){
             	return _.find(scope.commits, {sha: sha});
             }
@@ -128,17 +136,35 @@ function githubGraph($q, configuration, graphLayoutService, colors){
                     .data(scope.commits, function(d) {
                         return "_"+d.sha;
                     })
-                    .attr('id', function(d){
-                    	return "_"+d.sha;
-                    })
+                    
                     .call(setPosition)
-                    .attr('fill', getColorForCommit)
-                    .enter()
+                    .attr('fill', getColorForCommit);
+                var newCircles = circles.enter()
                     .append('svg:circle')
+                    .attr('id', function(d){
+                        return "_"+d.sha;
+                    })
                     .classed('commit', true)
                     .call(setPosition)
                     .attr('fill', getColorForCommit)
-                    .attr('r', 5);
+                    .attr('r', 5)
+                    .on('mouseenter', function(item){
+                        d3.select(this)
+                            .transition()
+                            .duration(300)
+                            .attr('r', 10);
+                    })
+                    .on('mouseleave', function() {
+                      d3.select(this)
+                            .transition()
+                            .duration(300)
+                            .attr('r', 5);
+                    })
+                    .attr('ng-click',function(item){ return 'clickCommit("'+item.sha+'")'; })
+                    .each(function(item, el){
+                        $compile(this)(scope);
+                    });
+
             }
             function findChildren(commit){
                 return _.chain(scope.commits)
@@ -323,10 +349,10 @@ function githubGraph($q, configuration, graphLayoutService, colors){
 
                     self.commitContainer = svg.append('svg:g').classed('commits-container', true);
                     self.svgContainer = svgContainer;
-	                self.commitBox = self.commitContainer.append('svg:g').classed('commits', true);
-                    self.branchMarkersBox = self.commitContainer.append('svg:g').classed('labels', true);
 	                self.pointerBox = self.commitContainer.append('svg:g').classed('pointers', true);
-                    self.svg = svg;
+                    self.commitBox = self.commitContainer.append('svg:g').classed('commits', true);
+                    self.branchMarkersBox = self.commitContainer.append('svg:g').classed('labels', true);
+	                self.svg = svg;
                     
 
 	                resolve();

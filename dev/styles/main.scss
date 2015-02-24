@@ -93,11 +93,13 @@ path.commit{
 	stroke-width: 2;
 	fill: none;
 }
-rect.branch-background{
-	fill: #333;
+rect.branch-label-background{
+	fill: #555;
+  stroke: white;
+  stroke-width: 1px;
 }
 text.branch-label{
-	
+
    fill: #efefef;
 	font-size: 11px;
 	font-family: Arial;
