@@ -1,9 +1,0 @@
-﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ConsoleApplication1.Properties" GeneratedClassName="Settings">
-  <Profiles />
-  <Settings>
-    <Setting Name="ConsoleApplication1_RacecardService_RacecardServiceEJB" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://172.16.152.9:3408/TAS_21041969/RacecardServiceEJB</Value>
-    </Setting>
-  </Settings>
-</SettingsFile>
