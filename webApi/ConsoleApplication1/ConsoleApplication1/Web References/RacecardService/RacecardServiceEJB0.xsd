@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="com.pmc.webservice.exchange.chronology" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="ExternalRaceState">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="UNKNOWN" />
+      <xs:enumeration value="START" />
+      <xs:enumeration value="STOP" />
+      <xs:enumeration value="RED" />
+      <xs:enumeration value="RIDE" />
+      <xs:enumeration value="ON_TRACK" />
+      <xs:enumeration value="THREE_MN_START" />
+      <xs:enumeration value="UNDER_ORDER" />
+      <xs:enumeration value="FALSE_START" />
+      <xs:enumeration value="STARTED" />
+      <xs:enumeration value="TEMPORARY_ARRIVED" />
+      <xs:enumeration value="TEMPORARY_PICTURE" />
+      <xs:enumeration value="TEMPORARY_VALIDATED" />
+      <xs:enumeration value="RED_ARRIVED" />
+      <xs:enumeration value="DEFINITIVE_ARRIVED" />
+      <xs:enumeration value="END" />
+      <xs:enumeration value="CANCELLED" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

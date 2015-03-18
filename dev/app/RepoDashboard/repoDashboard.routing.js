@@ -5,7 +5,15 @@ function RepoDashboardRouteConfig($stateProvider){
                 main: {
                     templateUrl: 'RepoDashboard/RepoDashboard.tpl.html',
                     controller: 'RepoDashboard',
-                    controllerAs: 'repoDashboard'
+                    controllerAs: 'repoDashboard',
+                    resolve: {
+                        repository: ['gitHubService', '$stateParams', function(gitHubService, $stateParams){
+                            return gitHubService.getRepository($stateParams.repoId);
+                        }],
+                        branches: ['gitHubService', '$stateParams', function(gitHubService, $stateParams){
+                            return gitHubService.getBranches($stateParams.repoId);
+                        }]
+                    }
                 }
             },
             resolve: {

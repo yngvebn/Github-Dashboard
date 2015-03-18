@@ -1,1 +1,1 @@
-angular.module('app.views.repoDashboard', []);
+angular.module('app.views.repoDashboard', ['angular.filter']);

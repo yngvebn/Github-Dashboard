@@ -1,13 +1,15 @@
-function gitHubService($http, GitHubSettings, CacheLocal, localStorageService, $q){
+function gitHubService($http, GitHubSettings, gitHubUrls, CacheLocal, localStorageService, $q){
 	return {
 		getAccessToken: getAccessToken,
 		getBranches: getBranches,
 		getCommits: getCommits,
 		getRawUrl: getRawUrl,
 		setToken: setToken,
-		getCurrenttUser: getCurrenttUser,
+		getCurrenttUser: getCurrentUser,
 		getRepositories: getRepositories,
-		getOrganizations: getOrganizations
+		getOrganizations: getOrganizations,
+		getRepository: getRepository,
+		compare: compare
 	};
 
 
@@ -18,18 +20,26 @@ function gitHubService($http, GitHubSettings, CacheLocal, localStorageService, $
 
 
 	function getOrganizations(){
-		return getCurrenttUser().then(function(result){
+		return getCurrentUser().then(function(result){
 			return getRawUrl(result.data['organizations_url']).then(function(r){ return r.data; });
+		});
+	}
+	function compare(repo, base, head){
+		return getCurrentUser().then(function(){
+			return getRawUrl(gitHubUrls.compare(repo, base, head));
+		});
+	}
+	function getRepository(id){
+		return getCurrentUser().then(function(){
+			return getRawUrl(gitHubUrls.repo(id));
 		});
 	}
 
 	function getRepositories(){
-		
 			return getRawUrl('https://api.github.com/user/repos?per_page=250').then(function(r){ return r.data; });
-		
 	}
 
-	function getCurrenttUser(){
+	function getCurrentUser(){
 		return $q(function(resolve, reject){
 			var token = getToken();
 			if(!token) reject('not authenticated');
@@ -49,8 +59,10 @@ function gitHubService($http, GitHubSettings, CacheLocal, localStorageService, $
 		return getRawUrl('https://api.github.com/repos/yngvebn/'+repo+'/commits?per_page=250&sha='+branch);
 	}
 
-	function getBranches(repo){
-		return getRawUrl('https://api.github.com/repos/yngvebn/'+repo+'/branches');
+	function getBranches(id){
+		return getCurrentUser().then(function(){
+			return getRawUrl(gitHubUrls.branches(id));
+		});
 	}
 
 	function getAccessToken(code){

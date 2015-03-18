@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://172.16.152.9:3408/TAS_21041969/RacecardServiceEJB?xsd=2" filename="RacecardServiceEJB.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://172.16.152.9:3408/TAS_21041969/RacecardServiceEJB?xsd=3" filename="RacecardServiceEJB0.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://172.16.152.9:3408/TAS_21041969/RacecardServiceEJB?xsd=1" filename="RacecardServiceEJB1.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://172.16.152.9:3408/TAS_21041969/RacecardServiceEJB?wsdl=1" filename="RacecardServiceEJB.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://172.16.152.9:3408/TAS_21041969/RacecardServiceEJB?wsdl" filename="RacecardServiceEJB0.wsdl" />
+  </Results>
+</DiscoveryClientResultsFile>

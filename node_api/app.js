@@ -16,6 +16,10 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../tmp'));
 
 
+app.get('/api/test', function(req, res){
+    res.send(401);
+});
+
 app.post('/api/github/accesstoken', function(req, res) {
     var options = {
         method: 'POST',

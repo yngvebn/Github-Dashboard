@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://services.star3000.pmc.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="RacecardServiceEJB" targetNamespace="http://services.star3000.pmc.com" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <ns1:Policy xmlns:ns1="http://www.w3.org/ns/ws-policy" wsu:Id="RacecardServicePortBinding_MTOM_Policy">
+    <ns1:ExactlyOne>
+      <ns1:All>
+        <ns2:OptimizedMimeSerialization xmlns:ns2="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization" />
+      </ns1:All>
+    </ns1:ExactlyOne>
+  </ns1:Policy>
+  <import namespace="http://services.star3000.pmc.com/" location="http://172.16.152.9:3408/TAS_21041969/RacecardServiceEJB?wsdl=1" />
+  <types />
+  <binding xmlns:ns3="http://services.star3000.pmc.com/" name="RacecardServicePortBinding" type="ns3:RacecardService">
+    <ns4:PolicyReference xmlns:ns4="http://www.w3.org/ns/ws-policy" URI="#RacecardServicePortBinding_MTOM_Policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <operation name="getRacecard">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://services.star3000.pmc.com/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://services.star3000.pmc.com/" />
+      </output>
+      <fault name="TASException">
+        <soap:fault use="literal" name="TASException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getEvent">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://services.star3000.pmc.com/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://services.star3000.pmc.com/" />
+      </output>
+      <fault name="TASException">
+        <soap:fault use="literal" name="TASException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getRace">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://services.star3000.pmc.com/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://services.star3000.pmc.com/" />
+      </output>
+      <fault name="TASException">
+        <soap:fault use="literal" name="TASException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="racecardRequest">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://services.star3000.pmc.com/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://services.star3000.pmc.com/" />
+      </output>
+      <fault name="TASException">
+        <soap:fault use="literal" name="TASException" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="RacecardServiceEJB">
+    <port name="RacecardServicePort" binding="tns:RacecardServicePortBinding">
+      <soap:address location="http://172.16.152.9:3408/TAS_21041969/RacecardServiceEJB" />
+    </port>
+  </service>
+</definitions>

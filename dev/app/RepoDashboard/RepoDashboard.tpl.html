@@ -1,7 +1,13 @@
 
-<github-graph click-commit="repoDashboard.selectCommit" commits='repoDashboard.commitData.commits' branches='repoDashboard.commitData.branches'></github-graph>
-
+<!-- <github-graph click-commit="repoDashboard.selectCommit" commits='repoDashboard.commitData.commits' branches='repoDashboard.commitData.branches'></github-graph> -->
 <div>
-	
-	Hello
+<h1>{{repoDashboard.model.repository.name}}</h1>
+<div ng-repeat="parent in repoDashboard.model.branches | groupBy:'parent.name' | toArray:true | orderBy:'$key'">
+	<h2>{{ parent.$key }}</h2>
+	<ul>
+		<li ng-repeat="branch in parent | orderBy:'name'">
+			{{ branch.name }} - {{ branch.status}} (ahead by: {{branch.ahead}}, behind by: {{branch.behind}})
+		</li>
+	</ul>
+</div>
 </div>

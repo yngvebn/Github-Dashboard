@@ -3,14 +3,16 @@ function gitHubUrls(uri, string){
 		base: 'https://api.github.com',
 		repo: '{0}/repositories/{1}',
 		commits: '{0}/repositories/{1}/commits',
-		branches: '{0}/repositories/{1}/branches'
+		branches: '{0}/repositories/{1}/branches',
+		compare: '{0}/repositories/{1}/compare/{2}...{3}'
 
 	};
 
 	return {
 		repo: getRepo,
 		commits: getCommits,
-		branches: getBranches
+		branches: getBranches,
+		compare: getCompare
 	};
 
 	function appendQuery(url, query){
@@ -22,6 +24,10 @@ function gitHubUrls(uri, string){
 		}
 	}
 	
+	function getCompare(repository, base, branch){
+		return string.format(urls.compare, urls.base, repository, base, branch);
+	}
+
 	function getRepo(repository, filters){
 		return string.format(urls.repo, urls.base, repository);
 	}

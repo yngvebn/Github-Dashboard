@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://services.star3000.pmc.com/" targetNamespace="http://services.star3000.pmc.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://172.16.152.9:3408/TAS_21041969/RacecardServiceEJB?xsd=1" namespace="http://services.star3000.pmc.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://172.16.152.9:3408/TAS_21041969/RacecardServiceEJB?xsd=2" namespace="http://ejb.services.star3000.pmc.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://172.16.152.9:3408/TAS_21041969/RacecardServiceEJB?xsd=3" namespace="com.pmc.webservice.exchange.chronology" />
+    </xsd:schema>
+  </types>
+  <message name="getRacecard">
+    <part name="arg0" type="xsd:dateTime" />
+  </message>
+  <message name="getRacecardResponse">
+    <part name="return" type="tns:RacecardResponse" />
+  </message>
+  <message name="TASException">
+    <part name="fault" element="tns:TASException" />
+  </message>
+  <message name="getEvent">
+    <part name="arg0" type="xsd:dateTime" />
+    <part name="arg1" type="xsd:int" />
+  </message>
+  <message name="getEventResponse">
+    <part name="return" type="tns:Event" />
+  </message>
+  <message name="getRace">
+    <part name="com.pmc.webservice.exchange.betting.RaceRef" type="tns:RaceRef" />
+  </message>
+  <message name="getRaceResponse">
+    <part name="return" type="tns:Race" />
+  </message>
+  <message name="racecardRequest">
+    <part name="raceRef" type="tns:RaceRef" />
+  </message>
+  <message name="racecardRequestResponse">
+    <part name="return" type="tns:RacecardResponse" />
+  </message>
+  <portType name="RacecardService">
+    <operation name="getRacecard">
+      <input message="tns:getRacecard" />
+      <output message="tns:getRacecardResponse" />
+      <fault name="TASException" message="tns:TASException" />
+    </operation>
+    <operation name="getEvent" parameterOrder="arg0 arg1">
+      <input message="tns:getEvent" />
+      <output message="tns:getEventResponse" />
+      <fault name="TASException" message="tns:TASException" />
+    </operation>
+    <operation name="getRace">
+      <input message="tns:getRace" />
+      <output message="tns:getRaceResponse" />
+      <fault name="TASException" message="tns:TASException" />
+    </operation>
+    <operation name="racecardRequest">
+      <input message="tns:racecardRequest" />
+      <output message="tns:racecardRequestResponse" />
+      <fault name="TASException" message="tns:TASException" />
+    </operation>
+  </portType>
+</definitions>

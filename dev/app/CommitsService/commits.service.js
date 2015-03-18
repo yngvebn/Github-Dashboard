@@ -10,7 +10,7 @@ function commitsService(Commit, Branch, gitHubLoader, gitHubUrls, string) {
         branches: data.branches,
         findCommit: findCommit,
         addBranch: addBranch,
-        loadRepository: loadRepository
+        loadRepository: loadRepository,
     };
     return service;
 

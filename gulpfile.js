@@ -78,12 +78,12 @@ var runWebServer = function(){
 
 
 gulp.task('test', function(done) {
-  return gulp.src(paths.specsJavascript)
+  /*return gulp.src(paths.specsJavascript)
     .pipe(karma({
       configFile: 'karma.conf.js',
       action: 'watch'
     }, done))
-    .on('error', handleError);
+    .on('error', handleError);*/
 });
 
 gulp.task('scripts', function() {
