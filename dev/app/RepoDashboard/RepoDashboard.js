@@ -10,10 +10,11 @@ function RepoDashboard($stateParams, gitHubService, $scope, repository, branches
     loadBranches();
 
     function isPartOfBranch(child, compare){
-    	if(compare.status == 'ahead' && compare.ahead_by < child.ahead) return true;
+
+        if(compare.status == 'ahead' && compare.ahead_by < child.ahead) return true;
     	if(compare.status == 'behind' && compare.behind_by < child.behind) return true;
     	
-    	if(compare.status == 'diverged' && (compare.behind_by < child.behind && compare.ahead_by < child.ahead)) {
+    	if((child.status != 'ahead' && child.status != 'behind') && compare.status == 'diverged' && ((compare.behind_by < child.behind) && (compare.ahead_by < child.ahead))) {
     		return true;
     	}
 
@@ -46,28 +47,50 @@ function RepoDashboard($stateParams, gitHubService, $scope, repository, branches
     		});
     }
 
+    function updateBranchActivity(){
+        _.forEach(vm.model.branches, function(branch){
+            gitHubService.getCommit(vm.model.repository.id, branch.name)
+                .then(function(res){
+                    var commit = res.data;
+
+                        branch.lastactivity = {
+                            author: commit.commit.author.name,
+                            avatar: commit.author.avatar_url,
+                            when: commit.commit.author.date,
+                            message: commit.commit.message
+                        }
+                })
+        });
+    }
+
 
 	function loadBranches(){
 		_.chain(branches.data)
 		  .reject(function(b){ return mainBranches.indexOf(b.name) > -1; })		
-		  .pluck('name')
 		  .value()
 		  .forEach(function(b){
-		  		vm.model.branches.push({
-		  			name: b,
+            	vm.model.branches.push({
+		  			name: b.name,
 		  			parent: {
 		  				name: 'analyzing...',
 		  			},
 	  				status: 'unknown',
 	  				ahead: '0',
-	  				behind: '0'
+	  				behind: '0',
+                    lastactivity: null
 		  		});
 		  });
-
+          updateBranchActivity();
 		updateBranchStatistics();
 
 	}
 
 }
+function HumanizeFilter(){
+    return function(key){
+        return moment.duration(moment().diff(moment(key))).humanize()+ ' ago'
+    }
+}
+angular.module('app.views.repoDashboard').filter('humanize', HumanizeFilter)
 
 angular.module('app.views.repoDashboard').controller('RepoDashboard', RepoDashboard);

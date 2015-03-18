@@ -2,12 +2,26 @@
 <!-- <github-graph click-commit="repoDashboard.selectCommit" commits='repoDashboard.commitData.commits' branches='repoDashboard.commitData.branches'></github-graph> -->
 <div>
 <h1>{{repoDashboard.model.repository.name}}</h1>
-<div ng-repeat="parent in repoDashboard.model.branches | groupBy:'parent.name' | toArray:true | orderBy:'$key'">
-	<h2>{{ parent.$key }}</h2>
-	<ul>
-		<li ng-repeat="branch in parent | orderBy:'name'">
-			{{ branch.name }} - {{ branch.status}} (ahead by: {{branch.ahead}}, behind by: {{branch.behind}})
+	<ul class="branch branch__list">
+		<li class="branch__header">Branch-status</li>
+		<li class="branch__item" ng-repeat="branch in repoDashboard.model.branches | orderBy:'name'">
+		<span class="branch__box">
+			<span class="branch__name">{{ branch.name }}</span>
+		</span>
+		<span class="branch__activity">
+			<span class="activity__author-avatar">
+				<img ng-src="{{branch.lastactivity.avatar}}">
+			</span><span class="activity__author">{{ branch.lastactivity.author }}</span> updated <span class="activity__when">{{ branch.lastactivity.when | humanize }}</span>
+		</span>
+		<span class="branch__status__box">
+		<span class="branch__status" ng-class="branch.status">
+			{{ {'diverged': 'has diverged from', 'ahead': 'is ahead of', 'behind': 'is behind'}[branch.status]}} 
+			<span class="branch__name">{{branch.parent.name}}</span>
+		</span>
+		<span class="branch__divergence">
+			{{branch.behind}} | {{branch.ahead}}
+		</span>
+		</span>
 		</li>
 	</ul>
-</div>
 </div>

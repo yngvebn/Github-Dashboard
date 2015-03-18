@@ -3,6 +3,7 @@ function gitHubService($http, GitHubSettings, gitHubUrls, CacheLocal, localStora
 		getAccessToken: getAccessToken,
 		getBranches: getBranches,
 		getCommits: getCommits,
+		getCommit: getCommit,
 		getRawUrl: getRawUrl,
 		setToken: setToken,
 		getCurrenttUser: getCurrentUser,
@@ -35,6 +36,11 @@ function gitHubService($http, GitHubSettings, gitHubUrls, CacheLocal, localStora
 		});
 	}
 
+	function getCommit(id, commit){
+		return getCurrentUser().then(function(){
+			return getRawUrl(gitHubUrls.commit(id, commit));
+		});
+	}
 	function getRepositories(){
 			return getRawUrl('https://api.github.com/user/repos?per_page=250').then(function(r){ return r.data; });
 	}
