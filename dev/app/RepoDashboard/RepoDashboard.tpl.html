@@ -3,15 +3,17 @@
 <div>
 <h1>{{repoDashboard.model.repository.name}}</h1>
 	<ul class="branch branch__list">
-		<li class="branch__header">Branch-status</li>
-		<li class="branch__item" ng-repeat="branch in repoDashboard.model.branches | orderBy:'name'">
+		<li class="branch__header">Branch-status &nbsp; <input type="text" ng-model="filter.parent.name" placeholder="parent branch">
+		
+		</li>
+		<li class="branch__item" ng-repeat="branch in repoDashboard.model.branches | filter:filter |orderBy:'lastactivity.when':true">
 		<span class="branch__box">
 			<span class="branch__name">{{ branch.name }}</span>
 		</span>
 		<span class="branch__activity">
 			<span class="activity__author-avatar">
 				<img ng-src="{{branch.lastactivity.avatar}}">
-			</span><span class="activity__author">{{ branch.lastactivity.author }}</span> updated <span class="activity__when">{{ branch.lastactivity.when | humanize }}</span>
+			</span><span class="activity__author">{{::branch.lastactivity.author }}</span> updated <span class="activity__when">{{branch.lastactivity.when | humanize }}</span>
 		</span>
 		<span class="branch__status__box">
 		<span class="branch__status" ng-class="branch.status">

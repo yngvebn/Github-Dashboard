@@ -1,6 +1,6 @@
 function RepoDashboard($stateParams, gitHubService, $scope, repository, branches, $http){
 	var vm = this,
-	mainBranches = ['q-plus','master', 'develop',  'TeamGame', 'F201501', 'RegProsess', 'Spillbokser'];
+	mainBranches = ['q-plus','master', 'develop',  'TeamGame', 'F201501', /*'RegProsess', */'Spillbokser'];
     vm.model = {
         repository: repository.data,
         branches: [],
@@ -55,7 +55,7 @@ function RepoDashboard($stateParams, gitHubService, $scope, repository, branches
 
                         branch.lastactivity = {
                             author: commit.commit.author.name,
-                            avatar: commit.author.avatar_url,
+                            avatar: (commit.author || { avatar_url: 'http://placehold.it/30x30'}).avatar_url,
                             when: commit.commit.author.date,
                             message: commit.commit.message
                         }
