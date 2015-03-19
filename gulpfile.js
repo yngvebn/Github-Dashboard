@@ -1,4 +1,5 @@
 var gulp          = require('gulp'),
+    plumber       = require('gulp-plumber'),
     gulpif        = require('gulp-if'),
     concat        = require('gulp-concat'),
     rimraf        = require('gulp-rimraf'),
@@ -91,7 +92,10 @@ gulp.task('scripts', function() {
     .pipe(gulpif(/html$/, buildTemplates()))
     .pipe(concat('app.js'))
     .pipe(wrap('(function(){\n"use strict";\n<%= contents %>\n})();'))
+    .pipe(plumber())
     .pipe(ngAnnotate())
+    .pipe(plumber.stop())
+    .on('error', util.log)
     .pipe(gulpif(argv.production, uglify()))
     .pipe(gulpif(argv.production, gulp.dest(paths.distJavascript), gulp.dest(paths.tmpJavascript)));
 });
@@ -111,7 +115,7 @@ gulp.task('ngMaterialThemes', function(){
 function buildVendorScripts() {
   return es.pipeline(
     concat('vendor.js'),
-    gulpif(argv.production, ngAnnotate()),
+    gulpif(argv.production, ngAnnotate()).on('error', util.log),
     gulpif(argv.production, uglify()),
     gulpif(argv.production, gulp.dest(paths.distJavascript), gulp.dest(paths.tmpJavascript))
   );
@@ -120,7 +124,7 @@ function buildVendorScripts() {
 
 function buildVendorCss() {
   return es.pipeline(
-    sass().on('error', handleError),
+    sass(),
     autoprefixer({ browsers: ['last 2 versions', 'ie 9'], cascade: false }),
     concat('vendor.css'),
     gulpif(argv.production, minifyCSS({ keepSpecialComments : 0 })),
@@ -131,11 +135,19 @@ function buildVendorCss() {
 
 gulp.task('styles', function() {
   return gulp.src(paths.appStyles)
-    .pipe(gulpif(/scss$/, sass().on('error', handleError)))
+    .pipe(plumber())
+    .pipe(sass({
+        style: 'compressed',
+        errLogToConsole: false,
+        onError: function(err) {
+            return notify().write(err);
+        }
+    }))
     .pipe(autoprefixer({ browsers: ['last 2 versions', 'ie 9'], cascade: false }))
     .pipe(concat('app.css'))
     .pipe(gulpif(argv.production, minifyCSS()))
-    .pipe(gulpif(argv.production, gulp.dest(paths.distCss), gulp.dest(paths.tmpCss)));
+    .pipe(gulpif(argv.production, gulp.dest(paths.distCss), gulp.dest(paths.tmpCss)))
+    .pipe(plumber.stop());
 });
 
 gulp.task('images', function() {
@@ -218,7 +230,6 @@ gulp.task('default', ['watch']);
 
 function handleError(err){
   util.log(err.message);
-  this.emit('end');
 }
 
 function buildTemplates() {

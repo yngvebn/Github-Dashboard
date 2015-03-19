@@ -10,7 +10,8 @@ function gitHubService($http, GitHubSettings, gitHubUrls, CacheLocal, localStora
 		getRepositories: getRepositories,
 		getOrganizations: getOrganizations,
 		getRepository: getRepository,
-		compare: compare
+		compare: compare,
+		isRealtimeEnabled: isRealtimeEnabled
 	};
 
 
@@ -19,10 +20,18 @@ function gitHubService($http, GitHubSettings, gitHubUrls, CacheLocal, localStora
 		localStorageService.set('__github_token', token);
 	}
 
+	function isRealtimeEnabled(repo){
+		return getCurrentUser().then(function(result){
+			return getRawUrl(gitHubUrls.hooks(repo)).then(function(hooks){
+				return _.some(hooks.data, function(h){ 
+					return h.config.url ===  'http://50576814.ngrok.com'});
+			});
+		})
+	}
 
 	function getOrganizations(){
 		return getCurrentUser().then(function(result){
-			return getRawUrl(result.data['organizations_url']).then(function(r){ return r.data; });
+			return getRawUrl(result.data.organizations_url).then(function(r){ return r.data; });
 		});
 	}
 	function compare(repo, base, head){
@@ -77,7 +86,7 @@ function gitHubService($http, GitHubSettings, gitHubUrls, CacheLocal, localStora
 			scope: 'user, repo'
 		};
 		angular.extend(options, GitHubSettings);
-		return $http.post('http://localhost:3334/api/github/accesstoken', options);
+		return $http.post('/api/github/accesstoken', options);
 	}
 }
 

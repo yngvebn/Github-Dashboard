@@ -5,8 +5,8 @@ function gitHubUrls(uri, string){
 		commits: '{0}/repositories/{1}/commits',
 		commit: '{0}/repositories/{1}/commits/{2}',
 		branches: '{0}/repositories/{1}/branches',
-		compare: '{0}/repositories/{1}/compare/{2}...{3}'
-
+		compare: '{0}/repositories/{1}/compare/{2}...{3}',
+		hooks: '{0}/repositories/{1}/hooks'
 	};
 
 	return {
@@ -14,7 +14,8 @@ function gitHubUrls(uri, string){
 		commits: getCommits,
 		commit: getCommit,
 		branches: getBranches,
-		compare: getCompare
+		compare: getCompare,
+		hooks: getHooks
 	};
 
 	function appendQuery(url, query){
@@ -24,6 +25,10 @@ function gitHubUrls(uri, string){
 		else{
 			return uri(url).toString();
 		}
+	}
+
+	function getHooks(repository){
+		return string.format(urls.hooks, urls.base, repository);
 	}
 	
 	function getCompare(repository, base, branch){

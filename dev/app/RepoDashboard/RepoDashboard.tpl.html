@@ -4,6 +4,14 @@
 <h1>{{repoDashboard.model.repository.name}}</h1>
 	<ul class="branch branch__list">
 		<li class="branch__header">Branch-status &nbsp; <input type="text" ng-model="filter.parent.name" placeholder="parent branch">
+			<span class="branch__realtime" 
+				ng-class="{ 'enabled': repoDashboard.realTimeOptions.available, 'paused': repoDashboard.model.realTimeOptions.paused }" ng-switch on="repoDashboard.model.realTimeOptions.available">
+
+				<span ng-switch-when="true">realtime enabled</span>
+				<span ng-switch-when="false">enable realtime</span>
+			
+				<span ng-switch-default>awaiting realtime-status...</span>
+			</span>
 		
 		</li>
 		<li class="branch__item" ng-repeat="branch in repoDashboard.model.branches | filter:filter |orderBy:'lastactivity.when':true">

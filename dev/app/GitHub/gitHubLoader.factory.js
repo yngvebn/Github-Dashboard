@@ -1,7 +1,7 @@
 function gitHubLoader($q, gitHubService){
 	return {
 		load: load
-	}
+	};
 
    function getNextLink(linkHeader){
     	return  (/<(.*)>; rel="next"/.exec(linkHeader) || {1: undefined })[1];
@@ -26,7 +26,7 @@ function gitHubLoader($q, gitHubService){
    					else{
    						deferred.resolve(result.data);
    					}
-			})
+			});
 		}
 		loadPage(url);
 		return deferred.promise;

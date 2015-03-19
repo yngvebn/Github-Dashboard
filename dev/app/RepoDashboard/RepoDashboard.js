@@ -1,13 +1,31 @@
-function RepoDashboard($stateParams, gitHubService, $scope, repository, branches, $http){
+function RepoDashboard($stateParams, gitHubService, $scope, repository, branches, $http, serverEvents){
 	var vm = this,
-	mainBranches = ['q-plus','master', 'develop',  'TeamGame', 'F201501', /*'RegProsess', */'Spillbokser'];
+	mainBranches = ['master', 'develop']; //['q-plus','master', 'develop',  'TeamGame', 'F201501', /*'RegProsess', */'Spillbokser'];
     vm.model = {
         repository: repository.data,
         branches: [],
-        branchStatistics: []
+        branchStatistics: [],
+        realTimeOptions: {
+            available: null,
+            paused: null
+        }
     };
 
     loadBranches();
+
+    loadRealtimeInfo();
+
+    serverEvents.connect(vm.model.repository.id).on('hook', function(data){
+        console.log(data);
+    });
+
+    function loadRealtimeInfo(){
+        gitHubService.isRealtimeEnabled(vm.model.repository.id).then(function(isIt){
+            console.log(isIt);
+            vm.model.realTimeOptions.available = isIt;
+            vm.model.realTimeOptions.paused = isIt;
+        });
+    }
 
     function isPartOfBranch(child, compare){
 
@@ -58,8 +76,8 @@ function RepoDashboard($stateParams, gitHubService, $scope, repository, branches
                             avatar: (commit.author || { avatar_url: 'http://placehold.it/30x30'}).avatar_url,
                             when: commit.commit.author.date,
                             message: commit.commit.message
-                        }
-                })
+                        };
+                });
         });
     }
 
@@ -88,9 +106,9 @@ function RepoDashboard($stateParams, gitHubService, $scope, repository, branches
 }
 function HumanizeFilter(){
     return function(key){
-        return moment.duration(moment().diff(moment(key))).humanize()+ ' ago'
-    }
+        return moment.duration(moment().diff(moment(key))).humanize()+ ' ago';
+    };
 }
-angular.module('app.views.repoDashboard').filter('humanize', HumanizeFilter)
+angular.module('app.views.repoDashboard').filter('humanize', HumanizeFilter);
 
 angular.module('app.views.repoDashboard').controller('RepoDashboard', RepoDashboard);

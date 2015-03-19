@@ -1,7 +1,7 @@
 function stringUtilities(){
 	return {
 		format: format
-	}
+	};
 
 	function format(){
 		 // The string containing the format items (e.g. "{0}")

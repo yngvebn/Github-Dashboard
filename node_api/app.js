@@ -54,11 +54,22 @@ io.on('connection', function(socket){
     }, 4000);
      
 });
+var namespaces = {};
 
+app.post('/api/git', function(req, res){
+    res.send(200);
+    console.log(req.body.repository.id);
+    if(!namespaces[req.body.repository.id]){
+        var nsp = io.of('/'+req.body.repository.id);
+        namespaces[req.body.repository.id] = nsp;
+    }
+    namespaces[req.body.repository.id].emit('hook', req.body);
+});
 
 app.get('*', function(req, res) {
     console.log('sending ' + path.join(__dirname, '/../tmp/index.html'));
     res.sendFile(path.join(__dirname, '/../tmp/index.html'));
+
 });
 
 var port = 3334;
